@@ -84,8 +84,9 @@ figcaption.cap{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.45
 
 /* current project */
 .current{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:start}
-.status{display:inline-flex;align-items:center;gap:8px;color:var(--accent);margin-bottom:14px}
-.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+#now{border-top:1px solid var(--ink)}
+.status{display:inline-flex;align-items:center;gap:12px;color:var(--accent);margin-bottom:18px;font-size:clamp(18px,2vw,22px);font-weight:500;letter-spacing:.14em}
+.status::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
 @media (prefers-reduced-motion: reduce){.status::before{animation:none}}
 .current h3{font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
@@ -197,10 +198,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <!-- CURRENT PROJECT -->
   <section id="now">
     <div class="wrap">
-      <div class="sec-head"><h2>On the bench now</h2><span class="mono">Fall 2026</span></div>
-      <div class="current">
+            <div class="current">
         <div>
-          <span class="status mono">In progress</span>
+          <span class="status mono">In progress · Fall 2026</span>
           <h3>Wearable ECG + PPG band for pulse arrival time</h3>
           <p>My grandmother’s stroke is why I care about monitoring. After a stroke, heart rhythm and blood pressure get checked constantly, and both leave signals at the skin. This band records an electrical signal (ECG) and an optical one (PPG) at the same time. The delay between them, the pulse arrival time, tracks how fast the pressure wave travels, which is one route to cuff-less blood-pressure estimates.</p>
           <p>The goal is a validated measurement, not a gadget. Heart rate from the band is compared against a commercial watch using Bland–Altman agreement analysis.</p>
@@ -213,9 +213,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         </div>
         <div>
           <figure class="frame" style="margin:0">
-            <div class="exposure"><span class="slot">Photo slot: the band on your wrist, or the breadboard under side light</span></div>
+            <div class="exposure chart"><img src="img/wearable-plan.jpg" alt="Planned wiring: MAX30102 and AD8232 boards connected to an Arduino Uno, with a colour-coded connection list"></div>
             <span class="num">▸ 01</span>
           </figure>
+          <p class="meta" style="margin:8px 0 0">Planned wiring. Photos of the real build replace this once it’s on the bench.</p>
           <figure class="trace" style="margin-block:18px 0;margin-inline:0">
             <svg viewBox="0 0 520 150" role="img" aria-label="Diagram: ECG R-peak followed by the PPG pulse foot, with the gap labelled pulse arrival time">
               <g fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
