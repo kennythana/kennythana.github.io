@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Room-temperature monitor · Kenny Teeraphantuvat</title>
+<meta name="description" content="An Arduino monitor that warns when my film storage gets too warm or cold.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Room-temperature monitor · Kenny Teeraphantuvat">
+<meta property="og:description" content="An Arduino monitor that warns when my film storage gets too warm or cold.">
+<meta property="og:image" content="https://kennythana.github.io/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141719'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23C4122F' stroke-width='6'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="mark" href="../index.html">Kenny Teeraphantuvat</a>
+  <nav aria-label="Main"><a href="../index.html" aria-current="page">Work</a><a href="../publications.html">Publications</a><a href="../about.html">About</a></nav>
+</div></header>
+<main>
+<article class="project">
+<div class="wrap">
+  <p class="back"><a href="../index.html">← All work</a></p>
+  <h1>Room-temperature monitor</h1>
+  <p class="lede">An Arduino monitor that warns when my film storage gets too warm or cold.</p>
+  <p class="meta">EK 131 · Boston University · solo build</p>
+  <figure class="hero-img "><img src="../img/tempmonitor.jpg" alt="Black enclosure with a blue LCD showing temperature and a green LED"></figure>
+  <div class="prose">
+
+<h2>Why</h2>
+<p>I built this to watch the temperature where I store my film.</p>
+<h2>How it works</h2>
+<p>A TMP36 sensor feeds an Arduino Uno, which shows °C and °F on an I2C LCD. If the room leaves 70–80 °F, a red LED flashes and a buzzer sounds. It runs from a 9 V battery in a holder I designed in Onshape and 3D-printed, or from USB.</p>
+<p>I measured every part with calipers before laying out the box, prototyped on a breadboard, then soldered 22 AWG wire with heat shrink. I sized the LED resistors with Kirchhoff's voltage law, giving the red alarm LED the smaller resistor so it is brighter.</p>
+<div class="gallery c2"><figure class=""><img src="../img/temp-cad.jpg" alt="Onshape assembly of the enclosure" loading="lazy"><figcaption>Enclosure in Onshape</figcaption></figure><figure class=""><img src="../img/temp-wiring.jpg" alt="Wiring diagram" loading="lazy"><figcaption>Wiring diagram</figcaption></figure></div>
+<table class="specs"><tr><th>Sensor</th><td>TMP36, −40 to 125 °C</td></tr><tr><th>Alarm</th><td>Outside 70–80 °F: red LED and 1 kHz buzzer</td></tr><tr><th>LED current</th><td>Red 13.6 mA (220 Ω) · green 3 mA (1 kΩ)</td></tr><tr><th>Power</th><td>9 V battery, 80 mA draw, about 6 h</td></tr></table>
+
+  </div>
+  <p class="next"><a href="cassette-deck.html">Next: Cassette deck restoration →</a></p>
+</div>
+</article>
+</main>
+<footer><div class="wrap">
+  <span>Thana (Kenny) Teeraphantuvat · <span class="sel">kennythana@gmail.com</span></span>
+  <span><a href="https://www.linkedin.com/in/thana-teeraphantuvat-b70a9326b/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://kennytt.myportfolio.com/" target="_blank" rel="noopener">Photography</a></span>
+</div></footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

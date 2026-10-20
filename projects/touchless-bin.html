@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Touchless waste bin · Kenny Teeraphantuvat</title>
+<meta name="description" content="An ultrasonic sensor and servo that open the lid without touch.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Touchless waste bin · Kenny Teeraphantuvat">
+<meta property="og:description" content="An ultrasonic sensor and servo that open the lid without touch.">
+<meta property="og:image" content="https://kennythana.github.io/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141719'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23C4122F' stroke-width='6'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="mark" href="../index.html">Kenny Teeraphantuvat</a>
+  <nav aria-label="Main"><a href="../index.html" aria-current="page">Work</a><a href="../publications.html">Publications</a><a href="../about.html">About</a></nav>
+</div></header>
+<main>
+<article class="project">
+<div class="wrap">
+  <p class="back"><a href="../index.html">← All work</a></p>
+  <h1>Touchless waste bin</h1>
+  <p class="lede">An ultrasonic sensor and servo that open the lid without touch.</p>
+  <p class="meta">EK 210 Intro to Engineering Design · May – Jun 2026 · with Guy Margalit and Mohammed Sunbul</p>
+  <figure class="hero-img "><img src="../img/bin.jpg" alt="Black lid assembly on a grey bin with an ultrasonic sensor on a green bracket"></figure>
+  <div class="prose">
+
+<h2>What it does</h2>
+<p>An HC-SR04 ultrasonic sensor spots a hand within 50 cm, and a 35 kg·cm waterproof servo swings the lid open, holds it for 5 seconds, then closes it.</p>
+<h2>My part</h2>
+<p>I owned the CAD model and the servo mount in Onshape, and tuned the distance threshold and debounce timing to stop false triggers. We chose the sensor, actuator and power source from a function–means chart, then ranked goals with a pairwise comparison: no-touch hygiene first, cost last.</p>
+<div class="gallery c2"><figure class=""><img src="../img/bin-cad.jpg" alt="Onshape assembly of the lid housing" loading="lazy"><figcaption>Lid assembly in Onshape</figcaption></figure><figure class=""><img src="../img/bin-circuit.jpg" alt="Circuit diagram of the bin" loading="lazy"><figcaption>Circuit diagram</figcaption></figure></div>
+<table class="specs"><tr><th>Trigger distance</th><td>Under 50 cm, average of 3 readings</td></tr><tr><th>Lid cycle</th><td>Open 5 s, then 3 s cooldown</td></tr><tr><th>Actuator</th><td>DS3235 digital servo, 35 kg·cm, waterproof</td></tr><tr><th>Power</th><td>8× AA pack, about 42 h estimated at 60 mA idle</td></tr><tr><th>Bill of materials</th><td>$105.27, against a $200 target</td></tr></table>
+
+  </div>
+  <p class="next"><a href="temp-monitor.html">Next: Room-temperature monitor →</a></p>
+</div>
+</article>
+</main>
+<footer><div class="wrap">
+  <span>Thana (Kenny) Teeraphantuvat · <span class="sel">kennythana@gmail.com</span></span>
+  <span><a href="https://www.linkedin.com/in/thana-teeraphantuvat-b70a9326b/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://kennytt.myportfolio.com/" target="_blank" rel="noopener">Photography</a></span>
+</div></footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>
