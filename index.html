@@ -183,6 +183,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   .hero{padding-block:48px 28px}
 }
 @media (max-width:460px){nav a:nth-child(3){display:none}}
+
+/* Clean photo treatment: no film borders */
+.frame{background:none;padding:0;border-radius:0}
+.frame::before,.frame::after{display:none}
+.frame .num{display:none}
+.frame .exposure{border-radius:2px;overflow:hidden}
+.frame .exposure.chart{border:1px solid var(--line)}
+.edge::before,.edge::after{display:none}
+.edge{border-radius:2px}
 </style>
 </head>
 <body>
@@ -210,7 +219,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <dl>
         <div><dd data-stat="citations">205</dd><dt>Citations</dt></div>
         <div><dd data-stat="h_index">4</dd><dt>h-index</dt></div>
-        <div><dd>5</dd><dt>Papers</dt></div>
+        <div><dd>6</dd><dt>Papers</dt></div>
         <div><dd>2</dd><dt>First-author</dt></div>
       </dl>
     </div>
@@ -289,7 +298,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           <p class="mono tag">Biomaterials · Chiang Mai University</p>
           <h3>Mycelium biocomposites to replace polystyrene</h3>
           <p>Developed biodegradable fungal mycelium composites as a replacement for expanded polystyrene packaging, covering fungal culture, substrate prep, growth cycles and mechanical testing. I screened fungal species against agro-industrial waste substrates and linked each formulation to its compressive and flexural strength.</p>
-          <p class="meta">May 2023 – Mar 2025 · team of 5 postdocs · 4 journal articles and 1 conference paper, 2 as first author · ICAN Gold Medal and Best Young Inventor Award</p>
+          <p class="meta">May 2023 – Mar 2025 · team of 5 postdocs · 5 journal articles and 1 conference paper, 2 as first author · ICAN Gold Medal and Best Young Inventor Award</p>
           <div class="chips"><span>Fungal culture</span><span>Mechanical testing</span><span>Experimental design</span></div>
         </article>
 
@@ -482,6 +491,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="wrap">
       <div class="sec-head"><h2>Publications</h2><span class="mono" id="scholarNote">Google Scholar · <span data-stat="citations">205</span> citations</span></div>
       <ul class="pubs">
+        <li>
+          <span class="yr">2026</span>
+          <div><div class="t">Development of mycelium-based green composites from lignocellulosic wastes for eco-friendly decorative and design applications</div>
+          <div class="a">Aiduang, W., Thamjaree, W., Jinanukul, P., <b>Teeraphantuvat, T.</b>, Lumyong, S. · <span class="j">Bioresource Technology Reports, 103113</span></div></div>
+          <span class="c" data-pub="decorative">–<small>new</small></span>
+        </li>
         <li>
           <span class="yr">2026</span>
           <div><div class="t">Fungi with function: transforming mycelium-based biocomposites into eco-friendly egg packaging</div>
