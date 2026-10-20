@@ -137,6 +137,9 @@ details.more summary::-webkit-details-marker{display:none}
 details.more summary::after{content:"+";color:var(--accent)}
 details.more[open] summary::after{content:"−"}
 .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:4px 0 14px}
+.gallery.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+details.more.wide{margin:-28px 0 56px}
+@media (max-width:640px){.gallery.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .gallery figure{margin:0}
 .gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#FFFFFF;border:1px solid var(--line);border-radius:2px}
 .gallery figcaption b{color:var(--accent);font-weight:600}
@@ -238,6 +241,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <nav aria-label="Sections">
       <a href="#now">Now</a>
       <a href="#work">Work</a>
+      <a href="#assistive">Assistive</a>
       <a href="#builds">Builds</a>
       <a href="#publications">Publications</a>
       <a href="#about">About</a>
@@ -313,30 +317,53 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
       <article class="featured">
         <figure class="frame" style="margin:0">
-          <div class="exposure photo"><img src="img/keychains.jpg" alt="Rows of numbered Doi Tung hotel room key fobs, white and brown, laid out on a wooden table"></div>
+          <div class="exposure photo"><img src="img/doitung-fobs.jpg" alt="Sixty-plus Doi Tung hotel room key fobs numbered 301 to 343, white with brown DOITUNG lettering printed in macadamia composite"></div>
           <span class="num">▸ 02</span>
         </figure>
         <div>
           <p class="mono tag" style="color:var(--accent);margin:0 0 10px">Biocomposites · Chulalongkorn University</p>
           <h3>Macadamia-shell composite filament, from farm waste to hotel key fobs</h3>
-          <p>I optimized the ratio of macadamia shell powder to PLA to get a composite filament that extrudes and prints reliably, running compounding, extrusion and SEM characterization with a postdoctoral researcher and professor.</p>
-          <p>We used the filament to make the hotel room key fobs for the Doi Tung Development Project, a social enterprise under the Mae Fah Luang Foundation, printed from their own macadamia shell waste. The fobs are in daily use by guests, closing the loop from agricultural byproduct to finished product.</p>
+          <p>I developed a 3D-printing filament from macadamia shell waste. I optimized the ratio of shell powder to PLA, compounded it into pellets, and drew it into filament on a twin-screw extruder line, then checked particle dispersion under SEM with a postdoctoral researcher and professor.</p>
+          <p>The client was the <b>Doi Tung Development Project</b>, the royal initiative of the <b>Mae Fah Luang Foundation under Royal Patronage</b>, which turned opium-growing hillsides in northern Thailand into coffee and macadamia farms. Its own macadamia shell waste went into the filament, and the <b>DOITUNG lettering on the hotel room key fobs</b> is printed in it.</p>
           <p class="meta">Materials Researcher · May 2024 – Mar 2025, Jun 2026 – present</p>
-          <div class="chips"><span>Compounding</span><span>Filament extrusion</span><span>SEM</span><span>FDM printing</span></div>
+          <div class="chips"><span>Compounding</span><span>Twin-screw extrusion</span><span>SEM</span><span>FDM printing</span></div>
         </div>
       </article>
+      <details class="more wide">
+        <summary>From shell waste to filament: process photos</summary>
+            <div class="gallery g3">
+              <figure><img src="img/mac-pellets.jpg" alt="Brown composite pellets of macadamia shell powder and PLA in a beaker" loading="lazy"><figcaption>1. Compounded pellets</figcaption></figure>
+              <figure><img src="img/mac-extruder.jpg" alt="Filament line: twin-screw extruder feeding a strand through a water cooling bath to a winder" loading="lazy"><figcaption>2. Twin-screw extrusion line</figcaption></figure>
+              <figure><img src="img/mac-coil.jpg" alt="Coil of brown macadamia composite filament" loading="lazy"><figcaption>3. Finished filament</figcaption></figure>
+              <figure><img src="img/mac-sem.jpg" alt="Kenny pointing at an SEM image of the composite on a monitor beside the microscope" loading="lazy"><figcaption>4. SEM of the composite</figcaption></figure>
+              <figure><img src="img/mac-benchy.jpg" alt="Brown 3D-printed Benchy test boat printed from the macadamia filament" loading="lazy"><figcaption>5. Benchy print test</figcaption></figure>
+              <figure><img src="img/mac-tensile.jpg" alt="Dog-bone tensile specimen being printed from the macadamia filament" loading="lazy"><figcaption>6. Printed tensile specimen</figcaption></figure>
+            </div>
+      </details>
 
       <div class="grid">
         <article class="card">
           <figure class="frame" style="margin:0">
-            <div class="exposure photo"><img src="img/mycelium.jpg" alt="Two hollow cube-shaped mycelium biocomposite packaging samples" loading="lazy"></div>
+            <div class="exposure photo"><img src="img/myc-growroom.jpg" alt="Kenny in a lab coat in a mycelium grow room lined with substrate bags" loading="lazy"></div>
             <span class="num">▸ 03</span>
           </figure>
           <p class="mono tag">Biomaterials · Chiang Mai University</p>
           <h3>Mycelium biocomposites to replace polystyrene</h3>
           <p>Developed biodegradable fungal mycelium composites as a replacement for expanded polystyrene packaging, covering fungal culture, substrate prep, growth cycles and mechanical testing. I screened fungal species against agro-industrial waste substrates and linked each formulation to its compressive and flexural strength.</p>
-          <p class="meta">May 2023 – Mar 2025 · team of 5 postdocs · 5 journal articles and 1 conference paper, 2 as first author · ICAN Gold Medal and Best Young Inventor Award</p>
+          <p>I took the material further as <b>MycoTech Packaging</b>, my Conrad Challenge venture: protective packaging grown from mycelium on corn husk and paper waste.</p>
+          <p class="meta">May 2023 – Mar 2025 · team of 5 postdocs · 5 journal articles and 1 conference paper, 2 as first author · ICAN Gold Medal and Best Young Inventor Award · Conrad Challenge finalist</p>
           <div class="chips"><span>Fungal culture</span><span>Mechanical testing</span><span>Experimental design</span></div>
+          <details class="more">
+            <summary>Lab photos</summary>
+            <div class="gallery">
+              <figure><img src="img/myc-inoculate.jpg" alt="Kenny inoculating spawn in a laminar flow hood" loading="lazy"><figcaption>Inoculating spawn in the flow hood</figcaption></figure>
+              <figure><img src="img/myc-plates.jpg" alt="Ten petri dishes of fungal cultures labelled AM004 to AM009" loading="lazy"><figcaption>Screening fungal strains</figcaption></figure>
+              <figure><img src="img/myc-sawdust.jpg" alt="Three substrate bags labelled red alder, white oak and yellow poplar" loading="lazy"><figcaption>Sawdust substrates (conference paper)</figcaption></figure>
+              <figure><img src="img/myc-compression.jpg" alt="Cylindrical mycelium sample in a compression testing machine" loading="lazy"><figcaption>Mechanical testing</figcaption></figure>
+              <figure><img src="img/mycelium.jpg" alt="Two hollow cube-shaped mycelium packaging samples" loading="lazy"><figcaption>MycoTech packaging prototypes</figcaption></figure>
+              <figure><img src="img/myc-poster.jpg" alt="Kenny presenting his poster at the 15th ICERD in Khon Kaen" loading="lazy"><figcaption>Presenting at ICERD 2024</figcaption></figure>
+            </div>
+          </details>
         </article>
 
         <article class="card">
@@ -410,6 +437,69 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
               <li>Prototyped on a breadboard, then soldered 22 AWG solid-core wire with heat shrink, wire nuts for shared 5 V and ground, and spade connectors to the switch.</li>
               <li>Sized the LED resistors with KVL: the red alarm LED gets the smaller resistor so it is brighter.</li>
             </ul>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSISTIVE -->
+  <section id="assistive">
+    <div class="wrap">
+      <div class="sec-head"><h2>Assistive devices</h2><span class="mono">Designed for real hands</span></div>
+
+      <article class="featured">
+        <figure class="frame" style="margin:0">
+          <div class="exposure photo"><img src="img/ezgrip-use.jpg" alt="Left: Kenny's grandmother gripping a white printed handle on a cabinet edge. Right: her hand opening a flush door." loading="lazy"></div>
+          <span class="num">▸ 11</span>
+        </figure>
+        <div>
+          <p class="mono tag" style="color:var(--accent);margin:0 0 10px">Assistive design · Personal</p>
+          <h3>EZGrip: handles for my grandmother after her stroke</h3>
+          <p>After her stroke, my grandmother's grip strength dropped, and the flush cabinet doors and handle-less drawers at home had almost no ledge for her fingers. I designed attachments that give her fingers something to pull on.</p>
+          <p>I published three designs (a cabinet handle, a claw handle and a bar handle) as free files on Printables, where other people have downloaded them about 40 times.</p>
+          <p class="meta">Personal project · 2024 · <a href="https://www.printables.com/@kennythana_2204463" target="_blank" rel="noopener">Printables</a></p>
+          <div class="chips"><span>User-centred design</span><span>CAD</span><span>FDM printing</span></div>
+
+        </div>
+      </article>
+
+      <div class="grid">
+        <article class="card">
+          <figure class="frame" style="margin:0">
+            <div class="exposure photo"><img src="img/enable-top.jpg" alt="Blue 3D-printed e-NABLE Phoenix v3 prosthetic hand with grey and green finger joints" loading="lazy"></div>
+            <span class="num">▸ 12</span>
+          </figure>
+          <p class="mono tag">Prosthetics · e-NABLE</p>
+          <h3>e-NABLE Phoenix v3 prosthetic hand</h3>
+          <p>A body-powered prosthetic hand: bending the wrist pulls tension lines that close the fingers. I printed every part and assembled the joints, elastic and tension lines. It earned e-NABLE's fabrication and assembly badge for the Phoenix v3.</p>
+          <p class="meta">e-NABLE volunteer · 2023 · named e-NABLE Community Student Leader, 2024</p>
+          <div class="chips"><span>Body-powered prosthetics</span><span>Assembly</span><span>Tensioning</span></div>
+          <details class="more">
+            <summary>More photos</summary>
+            <div class="gallery">
+              <figure><img src="img/enable-side.jpg" alt="Side view of the hand showing the wrist hinge and tension block" loading="lazy"><figcaption>Wrist hinge and tension block</figcaption></figure>
+              <figure><img src="img/enable-palm.jpg" alt="Palm side of the hand held next to Kenny’s hand" loading="lazy"><figcaption>Palm view, to scale</figcaption></figure>
+            </div>
+          </details>
+        </article>
+
+        <article class="card">
+          <figure class="frame" style="margin:0">
+            <div class="exposure photo"><img src="img/splint-forearm.jpg" alt="White flat-printed honeycomb forearm splint before thermoforming" loading="lazy"></div>
+            <span class="num">▸ 13</span>
+          </figure>
+          <p class="mono tag">Medical aid · Donation</p>
+          <h3>Adapt3D splints for Ukraine</h3>
+          <p>Through my 3D Printing Club, I printed a set of Adapt3D splints for donation to Ukraine. They print flat as a honeycomb lattice, then a clinician heats and shapes them to the patient's arm, so one printer can make fitted splints without a cast room.</p>
+          <p class="meta">3D Printing Club, Northfield Mount Hermon · 2024 · Adapt3D Splints for Ukraine participant</p>
+          <div class="chips"><span>Medical printing</span><span>Thermoformable design</span><span>Donation</span></div>
+          <details class="more">
+            <summary>More photos</summary>
+            <div class="gallery">
+              <figure><img src="img/splint-hand.jpg" alt="Flat-printed honeycomb hand splint" loading="lazy"><figcaption>Hand splint, printed flat</figcaption></figure>
+              <figure><img src="img/splint-thumb.jpg" alt="Small honeycomb thumb splint" loading="lazy"><figcaption>Thumb piece</figcaption></figure>
+            </div>
           </details>
         </article>
       </div>
@@ -490,6 +580,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           </details>
         </article>
       </div>
+      <article class="featured" style="margin-top:56px">
+        <figure class="frame" style="margin:0">
+          <div class="exposure photo"><img src="img/racks-sill.jpg" alt="Two acrylic cup racks with rows of grey printed holders beside a bowl of cups on a windowsill" loading="lazy"></div>
+          <span class="num">▸ 14</span>
+        </figure>
+        <div>
+          <p class="mono tag" style="color:var(--accent);margin:0 0 10px">Design for manufacture · NMH</p>
+          <h3>Cup racks for the NMH dining hall</h3>
+          <p>The dining hall stored its cups loose in brass bowls, so they toppled and piled up. I offered to fix it: I measured the cups with calipers, designed a holder in CAD that grips their tapered shape, then printed it in batches and glued the holders onto cut acrylic bases to make racks.</p>
+          <p>It ran as a 3D Printing Club initiative with the NMH makerspace, and the racks stayed in daily use through my graduation. I handed the CAD files to Jamie Rourke, who runs the makerspace, so the makerspace can print more.</p>
+          <p class="meta">Senior year, 2025 · own CAD · batch-printed</p>
+          <div class="chips"><span>CAD</span><span>Batch production</span><span>Measurement</span><span>Assembly</span></div>
+          <details class="more">
+            <summary>More photos</summary>
+            <div class="gallery">
+              <figure><img src="img/racks-before.jpg" alt="Cups stacked loosely in brass bowls in the dining hall" loading="lazy"><figcaption>Before: cups piled in bowls</figcaption></figure>
+              <figure><img src="img/racks-caliper.jpg" alt="Measuring a cup base with digital calipers" loading="lazy"><figcaption>Measuring the cup</figcaption></figure>
+              <figure><img src="img/racks-holders.jpg" alt="Grey printed holders glued in a ring on an acrylic base" loading="lazy"><figcaption>Holders glued to acrylic</figcaption></figure>
+              <figure><img src="img/racks-sill.jpg" alt="Finished racks" loading="lazy"><figcaption>Finished racks</figcaption></figure>
+            </div>
+          </details>
+        </div>
+      </article>
+
       <article class="maint">
         <p class="mono tag">Optomechanical · Maintenance</p>
         <h3>Light-seal restoration: Nikon F2 and Mamiya RB67</h3>
@@ -594,7 +708,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           <div><dt>Design</dt><dd>Fusion 360, Onshape, FDM 3D printing, filament extrusion</dd></div>
           <div><dt>Computing</dt><dd>Python, Arduino / embedded C, data analysis, technical writing</dd></div>
           <div><dt>Awards</dt><dd>ICAN Gold Medal and Best Young Inventor Award (2024) · ICERD Excellent Paper and Excellent Poster (2024) · Conrad Challenge finalist (2024)</dd></div>
-          <div><dt>Leadership</dt><dd>Founder and president, 3D Printing Club, Northfield Mount Hermon (2023–2025). Taught Fusion 360 to 10 members.</dd></div>
+          <div><dt>Leadership</dt><dd>Founder and president, 3D Printing Club, Northfield Mount Hermon (2023–2025). Taught Fusion 360 to 10 members. e-NABLE Community Student Leader (2024).</dd></div>
           <div><dt>Languages</dt><dd>Thai (native), English (fluent), Mandarin</dd></div>
       </dl>
     </div>
