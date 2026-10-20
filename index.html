@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Thana (Kenny) Teeraphantuvat: biomedical engineering at Boston University. Wearable biosensing, biocomposites, nanomaterials.">
+<title>Kenny Teeraphantuvat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a contact sheet on white paper. Single light theme by choice.
+   Projects are frames on a strip; the one "selected" frame is circled in grease pencil. */
+:root{
+  --bg:#FFFFFF; --surface:#F6F7F7; --ink:#141719; --muted:#59636A; --line:#DDE2E2;
+  --film:#1D1A18; --film-ink:#E2A75C; --frame:#EEF1F1; --frame-ink:#69737A;
+  --accent:#C4122F; --accent-soft:rgba(196,18,47,.07);
+  --f-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
+
+/* top bar */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+header.bar{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.mark{font-family:var(--f-display);font-weight:800;font-size:18px;text-decoration:none;letter-spacing:-.01em}
+.mark span{color:var(--accent)}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted);font-size:14px}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding-block:72px 40px}
+.hero .eyebrow{color:var(--muted);margin-bottom:22px}
+.hero h1{font-size:clamp(44px, 9vw, 112px);font-weight:800;letter-spacing:-.035em;overflow-wrap:anywhere}
+.hero h1 .given{display:block;font-weight:500;font-size:.42em;letter-spacing:-.01em;color:var(--muted);margin-bottom:.15em}
+.thesis{max-width:40ch;font-size:clamp(19px, 2.2vw, 24px);line-height:1.45;margin:28px 0 0}
+.thesis em{font-style:normal;background:var(--accent-soft);box-shadow:inset 0 -2px 0 var(--accent);padding:0 2px}
+
+/* stats as film edge-print strip */
+.edge{margin-top:48px;background:var(--film);color:var(--film-ink);border-radius:3px;position:relative;overflow:hidden}
+.edge::before,.edge::after{content:"";position:absolute;left:0;right:0;height:7px;background:repeating-linear-gradient(90deg,transparent 0 9px,var(--bg) 9px 17px,transparent 17px 26px);opacity:.9}
+.edge::before{top:6px}.edge::after{bottom:6px}
+.edge dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:26px 8px}
+.edge div{padding:4px 16px;border-left:1px dashed color-mix(in srgb, var(--film-ink) 35%, transparent)}
+.edge div:first-child{border-left:0}
+.edge dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;order:2}
+.edge dd{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(26px,4vw,40px);font-variant-numeric:tabular-nums;color:#F3E6D2;line-height:1.1}
+@media (max-width:640px){.edge dl{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}.edge div:nth-child(3){border-left:0}}
+
+/* sections */
+section{padding-block:56px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--ink);padding-top:14px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
+.sec-head .mono{color:var(--muted)}
+
+/* film frame placeholder */
+.frame{position:relative;background:var(--film);padding:18px 10px;border-radius:2px;max-width:100%}
+.frame::before,.frame::after{content:"";position:absolute;left:10px;right:10px;height:6px;background:repeating-linear-gradient(90deg,var(--bg) 0 7px,transparent 7px 16px)}
+.frame::before{top:6px}.frame::after{bottom:6px}
+.frame .exposure{aspect-ratio:3/2;background:var(--frame);display:flex;align-items:flex-end;justify-content:space-between;gap:8px;padding:12px;color:var(--frame-ink);max-width:100%}
+.frame .exposure img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .num{position:absolute;bottom:-1px;right:14px;font-family:var(--f-mono);font-size:10px;color:var(--film-ink);letter-spacing:.1em;transform:translateY(-6px)}
+.frame .slot{font-family:var(--f-mono);font-size:11px;line-height:1.4;letter-spacing:.04em;text-transform:none}
+
+/* current project */
+.current{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:start}
+.status{display:inline-flex;align-items:center;gap:8px;color:var(--accent);margin-bottom:14px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion: reduce){.status::before{animation:none}}
+.current h3{font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.current p{margin:0 0 14px;max-width:62ch}
+.steps{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.steps .mono{color:var(--muted);padding-top:3px}
+.steps .done{color:var(--ink)}
+.trace{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:14px 14px 8px}
+.trace svg{display:block;width:100%;height:auto}
+.trace figcaption{color:var(--muted);margin-top:6px}
+
+/* work */
+.featured{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center;margin-bottom:56px}
+.selected{position:relative}
+.selected svg.grease{position:absolute;inset:-22px -26px;width:calc(100% + 52px);height:calc(100% + 44px);pointer-events:none;overflow:visible}
+.selected svg.grease path{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;opacity:.9}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 40px}
+.card .tag{color:var(--accent);margin:18px 0 8px}
+.card h3,.featured h3{font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-.015em;margin-bottom:10px}
+.featured h3{font-size:clamp(28px,3.6vw,40px);font-weight:800}
+.card p,.featured p{margin:0 0 12px;color:var(--ink);max-width:60ch}
+.meta{color:var(--muted);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chips span{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;border:1px solid var(--line);padding:3px 8px;border-radius:2px;color:var(--muted)}
+
+/* publications */
+.pubs{list-style:none;margin:0;padding:0}
+.pubs li{display:grid;grid-template-columns:64px minmax(0,1fr) 72px;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.pubs .yr{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.pubs .t{font-weight:500;line-height:1.4}
+.pubs .a{color:var(--muted);font-size:14px;margin-top:4px}
+.pubs .a b{color:var(--ink);font-weight:600}
+.pubs .j{font-style:italic;color:var(--muted);font-size:14px}
+.pubs .c{text-align:right;font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums}
+.pubs .c small{display:block;color:var(--muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.first{display:inline-block;margin-left:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:1px 5px;border-radius:2px;vertical-align:2px}
+@media (max-width:640px){.pubs li{grid-template-columns:minmax(0,1fr) 56px}.pubs .yr{grid-column:1/-1}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px}
+.about p{margin:0 0 16px;max-width:60ch}
+.kv{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px 16px;margin:0;font-size:15px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+
+/* contact */
+.contact{display:flex;flex-wrap:wrap;gap:28px 56px;align-items:flex-end;justify-content:space-between}
+.contact h2{font-size:clamp(34px,6vw,72px);font-weight:800;letter-spacing:-.03em;max-width:14ch}
+.links{display:grid;gap:12px;min-width:0}
+.links .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.links .mono{color:var(--muted);width:84px}
+.copy{font:inherit;font-size:13px;background:none;border:1px solid var(--line);color:var(--ink);padding:4px 10px;border-radius:2px;cursor:pointer}
+.copy:hover{border-color:var(--ink)}
+footer{padding-block:32px 48px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px}
+
+@media (max-width:820px){
+  .current,.featured,.about{grid-template-columns:minmax(0,1fr);gap:28px}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  nav{gap:14px}
+  .hero{padding-block:48px 28px}
+}
+@media (max-width:460px){nav a:nth-child(3){display:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">KT<span>.</span></a>
+    <nav aria-label="Sections">
+      <a href="#now">Now</a>
+      <a href="#work">Work</a>
+      <a href="#publications">Publications</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <p class="mono eyebrow">Biomedical Engineering · Boston University · Class of 2029</p>
+    <h1><span class="given">Thana “Kenny”</span>Teeraphantuvat</h1>
+    <p class="thesis">I work with materials and light: biocomposites, gold nanorods and optical sensors. Now I’m pointing that at <em>devices worn on the body</em>.</p>
+
+    <div class="edge" aria-label="Research record">
+      <dl>
+        <div><dd data-stat="citations">205</dd><dt>Citations</dt></div>
+        <div><dd data-stat="h_index">4</dd><dt>h-index</dt></div>
+        <div><dd>6</dd><dt>Publications</dt></div>
+        <div><dd>1</dd><dt>Material in production</dt></div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- CURRENT PROJECT -->
+  <section id="now">
+    <div class="wrap">
+      <div class="sec-head"><h2>On the bench now</h2><span class="mono">Fall 2026</span></div>
+      <div class="current">
+        <div>
+          <span class="status mono">In progress</span>
+          <h3>Wearable ECG + PPG band for pulse arrival time</h3>
+          <p>My grandmother’s stroke is why I care about monitoring. After a stroke, heart rhythm and blood pressure get checked constantly, and both leave signals at the skin. This band records an electrical signal (ECG) and an optical one (PPG) at the same time. The delay between them, the pulse arrival time, tracks how fast the pressure wave travels, which is one route to cuff-less blood-pressure estimates.</p>
+          <p>The goal is a validated measurement, not a gadget. Heart rate from the band is compared against a commercial watch using Bland–Altman agreement analysis.</p>
+          <ul class="steps">
+            <li><span class="mono">Hardware</span><span>Arduino Uno · AD8232 single-lead ECG · MAX30102 red/IR PPG, ~200 Hz</span></li>
+            <li><span class="mono">Software</span><span class="done">Firmware and a Python live-plot logger written</span></li>
+            <li><span class="mono">Analysis</span><span>Band-pass filtering, R-peak and pulse-foot detection, PAT, HRV (RMSSD)</span></li>
+            <li><span class="mono">Next</span><span>Breadboard build, rest and post-exercise sessions, agreement vs. watch</span></li>
+          </ul>
+        </div>
+        <div>
+          <figure class="frame" style="margin:0">
+            <div class="exposure"><span class="slot">Photo slot: the band on your wrist, or the breadboard under side light</span></div>
+            <span class="num">▸ 01</span>
+          </figure>
+          <figure class="trace" style="margin-block:18px 0;margin-inline:0">
+            <svg viewBox="0 0 520 150" role="img" aria-label="Diagram: ECG R-peak followed by the PPG pulse foot, with the gap labelled pulse arrival time">
+              <g fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                <path stroke="var(--ink)" d="M10 50 H70 l8 -4 l8 4 H120 l6 6 l8 -48 l8 58 l6 -12 H200 l14 -8 l14 8 H300 l8 -4 l8 4 H350 l6 6 l8 -48 l8 58 l6 -12 H430 l14 -8 l14 8 H510"/>
+                <path stroke="var(--accent)" d="M10 128 C40 128 60 130 90 132 C120 134 140 136 158 136 C168 136 176 100 196 96 C214 94 222 108 240 114 C262 120 290 126 330 130 C360 133 375 136 388 136 C398 136 406 100 426 96 C444 94 452 108 470 114 C490 120 500 124 510 126"/>
+              </g>
+              <g stroke="var(--muted)" stroke-dasharray="3 3" stroke-width="1">
+                <line x1="134" y1="8" x2="134" y2="142"/>
+                <line x1="160" y1="8" x2="160" y2="142"/>
+              </g>
+              <path d="M136 80 H158" stroke="var(--muted)" stroke-width="1" fill="none"/>
+              <text x="166" y="84" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11">PAT</text>
+              <text x="10" y="22" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11">ECG</text>
+              <text x="10" y="112" fill="var(--accent)" font-family="IBM Plex Mono, monospace" font-size="11">PPG</text>
+            </svg>
+            <figcaption class="mono">Schematic, not recorded data. Real traces go here after the first session.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head"><h2>Selected work</h2><span class="mono">Materials → devices</span></div>
+
+      <article class="featured">
+        <div class="selected">
+          <figure class="frame" style="margin:0">
+            <div class="exposure"><span class="slot">Photo slot: finished key fobs on a light box, plus a filament spool close-up</span></div>
+            <span class="num">▸ 02</span>
+          </figure>
+          <svg class="grease" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path vector-effect="non-scaling-stroke" d="M8 14 C30 2, 78 2, 94 16 C102 34, 100 74, 90 88 C70 100, 26 99, 8 86 C-1 70, -1 32, 10 12 C14 8, 20 6, 26 5"/>
+          </svg>
+        </div>
+        <div>
+          <p class="mono tag" style="color:var(--accent);margin:0 0 10px">Biocomposites · Client work</p>
+          <h3>Macadamia-shell composite filament, made into hotel key fobs</h3>
+          <p>I developed a 3D-printing filament that uses macadamia shells, an agricultural waste stream, as filler. It’s now under contract with the Doi Tung Development Project, which uses it to produce the room key fobs for its hotel.</p>
+          <p class="meta">Contracted materials work · Doi Tung Development Project, Thailand</p>
+          <div class="chips"><span>Composite formulation</span><span>Filament extrusion</span><span>FDM printing</span><span>Waste valorization</span></div>
+        </div>
+      </article>
+
+      <div class="grid">
+        <article class="card">
+          <figure class="frame" style="margin:0">
+            <div class="exposure"><span class="slot">Photo slot: mycelium composite panels or egg-packaging samples</span></div>
+            <span class="num">▸ 03</span>
+          </figure>
+          <p class="mono tag">Biomaterials · Chiang Mai University</p>
+          <h3>Mycelium-based green composites</h3>
+          <p>Fungal mycelium grown through agricultural and industrial waste, then pressed into usable materials. As first author, I showed that paper waste improves the composites’ physical and mechanical properties. Later papers apply the same materials to sawdust from wood processing, interior panels and egg packaging.</p>
+          <p class="meta">With Dr. Worawoot Aiduang and Prof. Saisamorn Lumyong · 6 papers</p>
+          <div class="chips"><span>Mechanical testing</span><span>Material characterization</span><span>Scientific writing</span></div>
+        </article>
+
+        <article class="card">
+          <figure class="frame" style="margin:0">
+            <div class="exposure"><span class="slot">Photo slot: nanorod solution vials (they have a strong color)</span></div>
+            <span class="num">▸ 04</span>
+          </figure>
+          <p class="mono tag">Nanomaterials · BU Yang Lab</p>
+          <h3>Gold nanorods tuned to 1030 nm</h3>
+          <p>Synthesizing gold nanorods whose absorption peak sits at 1030 nm, in the near-infrared. They’re the base material for photoacoustic retinal neuromodulation, which the lab is developing toward an eyedrop for retinitis pigmentosa and age-related macular degeneration.</p>
+          <p class="meta">Undergraduate researcher · Dr. Chen Yang’s lab, Boston University</p>
+          <div class="chips"><span>Seed-mediated synthesis</span><span>Plasmonics</span><span>Photoacoustics</span></div>
+        </article>
+
+        <article class="card">
+          <figure class="frame" style="margin:0">
+            <div class="exposure"><span class="slot">Photo slot: the bin with lid open, sensor visible</span></div>
+            <span class="num">▸ 05</span>
+          </figure>
+          <p class="mono tag">Embedded · EK 210</p>
+          <h3>Touchless waste bin</h3>
+          <p>An Arduino-controlled bin that opens its lid when a hand comes near, so nobody touches a dirty surface.</p>
+          <p class="meta">Course project · Boston University</p>
+          <div class="chips"><span>Arduino</span><span>Sensors</span><span>Actuation</span></div>
+        </article>
+
+        <article class="card">
+          <figure class="frame" style="margin:0">
+            <div class="exposure"><span class="slot">Photo slot: LCD showing a live reading</span></div>
+            <span class="num">▸ 06</span>
+          </figure>
+          <p class="mono tag">Embedded · EK 131</p>
+          <h3>Room-temperature monitor</h3>
+          <p>An Arduino Uno reads the room temperature and shows it on an I2C LCD. LEDs and a buzzer warn when it drifts out of range. The same board now runs the ECG + PPG band.</p>
+          <p class="meta">Course project · Boston University</p>
+          <div class="chips"><span>Arduino Uno</span><span>I2C</span><span>C++</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="wrap">
+      <div class="sec-head"><h2>Publications</h2><span class="mono" id="scholarNote">Google Scholar · <span data-stat="citations">205</span> citations</span></div>
+      <ul class="pubs">
+        <li>
+          <span class="yr">2024</span>
+          <div><div class="t">Improving the physical and mechanical properties of mycelium-based green composites using paper waste<span class="first">First author</span></div>
+          <div class="a"><b>T. Teeraphantuvat</b>, K. Jatuwong, P. Jinanukul, W. Thamjaree, S. Lumyong, et al. · <span class="j">Polymers 16(2), 262</span></div></div>
+          <span class="c" data-pub="paper-waste">65<small>cited</small></span>
+        </li>
+        <li>
+          <span class="yr">2025</span>
+          <div><div class="t">Sustainability initiatives in the wood processing industry: utilizing sawdust in the production of mycelium-based biocomposites to develop circular materials<span class="first">First author</span></div>
+          <div class="a"><b>T. Teeraphantuvat</b>, K. Jatuwong, S. Lumyong, W. Aiduang · <span class="j">Int. J. of Environmental and Rural Development 15(2), 47–54</span></div></div>
+          <span class="c" data-pub="sawdust">1<small>cited</small></span>
+        </li>
+        <li>
+          <span class="yr">2024</span>
+          <div><div class="t">Sustainable innovation: fabrication and characterization of mycelium-based green composites for modern interior materials using agro-industrial wastes and different species of fungi</div>
+          <div class="a">W. Aiduang, K. Jatuwong, P. Jinanukul, N. Suwannarach, J. Kumla, et al. · <span class="j">Polymers 16(4), 550</span></div></div>
+          <span class="c" data-pub="interior">74<small>cited</small></span>
+        </li>
+        <li>
+          <span class="yr">2024</span>
+          <div><div class="t">A review delving into the factors influencing mycelium-based green composites (MBCs) production and their properties for long-term sustainability targets</div>
+          <div class="a">W. Aiduang, K. Jatuwong, T. Luangharn, P. Jinanukul, W. Thamjaree, et al. · <span class="j">Biomimetics 9(6), 337</span></div></div>
+          <span class="c" data-pub="review">59<small>cited</small></span>
+        </li>
+        <li>
+          <span class="yr">2026</span>
+          <div><div class="t">Fungi with function: transforming mycelium-based biocomposites into eco-friendly egg packaging</div>
+          <div class="a">W. Aiduang, <b>T. Teeraphantuvat</b>, K. Jatuwong, O. Xayyavong, S. Lumyong · <span class="j">Bioresource Technology Reports, 102965</span></div></div>
+          <span class="c" data-pub="egg">1<small>cited</small></span>
+        </li>
+        <li>
+          <span class="yr">2026</span>
+          <div><div class="t">Development of mycelium-based green composites from lignocellulosic wastes for eco-friendly decorative and design applications</div>
+          <div class="a">W. Aiduang, W. Thamjaree, P. Jinanukul, <b>T. Teeraphantuvat</b>, S. Lumyong · <span class="j">Bioresource Technology Reports, 103113</span></div></div>
+          <span class="c" data-pub="decorative">–<small>new</small></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><h2>About</h2><span class="mono">Bangkok · Singapore · Boston</span></div>
+      <div class="about">
+        <div>
+          <p>I’m a biomedical engineering student at Boston University. I grew up in Bangkok and Singapore, and I’ve spent most of the last eight years studying abroad.</p>
+          <p>My research started with materials: turning agricultural waste into composites people can use, and then making nanoparticles that respond to near-infrared light. Wearable biosensing is where those two threads meet. A sensor on the skin is a materials problem and an optics problem at once.</p>
+          <p>Outside the lab I shoot film and digital photography. I scan and edit my own negatives, and I’ve photographed for BU. Working with a camera taught me most of what I know about light before any optics class did.</p>
+        </div>
+        <dl class="kv">
+          <dt>Study</dt><dd>B.S. Biomedical Engineering, Boston University, 2029</dd>
+          <dt>Interests</dt><dd>Wearable biosensing, optical sensors, biomaterials, prosthetic interfaces</dd>
+          <dt>Hardware</dt><dd>Arduino, analog front ends, I2C sensors, soldering, FDM printing</dd>
+          <dt>Software</dt><dd>Python (signal processing, logging), Arduino C++</dd>
+          <dt>Lab</dt><dd>Composite fabrication, mechanical testing, nanoparticle synthesis</dd>
+          <dt>Languages</dt><dd>Thai, English, some Mandarin</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head"><h2 style="font-size:20px">Contact</h2><span class="mono">Open to summer 2027 roles</span></div>
+      <div class="contact">
+        <h2>Building something you wear? Let’s talk.</h2>
+        <div class="links">
+          <div class="row"><span class="mono">Email</span><span id="email">kennythana@gmail.com</span><button class="copy" type="button" id="copyEmail">Copy</button></div>
+          <div class="row"><span class="mono">Photo</span><a href="https://www.instagram.com/kennyt.photo/" target="_blank" rel="noopener">@kennyt.photo</a></div>
+          <div class="row"><span class="mono">Scholar</span><span>Thana Teeraphantuvat</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap mono"><span>Thana Teeraphantuvat</span><span>Photos by the author</span></div>
+</footer>
+
+<script>
+/* Citation numbers: the HTML holds the last known values; stats.json (refreshed weekly
+   by a GitHub Action) overwrites them when present. If the file is missing, nothing changes. */
+fetch('stats.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
+  if(!d) return;
+  document.querySelectorAll('[data-stat]').forEach(function(el){var k=el.dataset.stat;if(d[k]!=null)el.textContent=d[k]});
+  if(d.papers) document.querySelectorAll('[data-pub]').forEach(function(el){
+    var n=d.papers[el.dataset.pub]; if(n==null) return;
+    el.innerHTML=(n>0?n:'–')+'<small>'+(n>0?'cited':'new')+'</small>';
+  });
+  if(d.updated){var u=document.getElementById('scholarNote');if(u)u.insertAdjacentText('beforeend',' · updated '+d.updated)}
+}).catch(function(){});
+document.getElementById('copyEmail').addEventListener('click', function(){
+  var btn=this, text=document.getElementById('email').textContent;
+  function done(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy'},1600)}
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected'}
+  try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+});
+</script>
+</body>
+</html>
