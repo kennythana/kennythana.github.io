@@ -101,7 +101,22 @@ figcaption.cap{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.45
 
 /* work */
 .featured{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center;margin-bottom:56px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 40px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 40px;align-items:start}
+details.more{margin-top:16px;border-top:1px solid var(--line)}
+details.more summary{cursor:pointer;list-style:none;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px 0;color:var(--ink);display:flex;justify-content:space-between}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"+";color:var(--accent)}
+details.more[open] summary::after{content:"−"}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:4px 0 14px}
+.gallery figure{margin:0}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#FFFFFF;border:1px solid var(--line);border-radius:2px}
+.gallery figcaption{font-size:12px;color:var(--muted);margin-top:4px}
+.specs{width:100%;border-collapse:collapse;font-size:14px;margin:0 0 14px}
+.specs th{text-align:left;font-weight:500;color:var(--muted);padding:6px 12px 6px 0;width:42%;vertical-align:top}
+.specs td{padding:6px 0;font-variant-numeric:tabular-nums}
+.specs tr+tr th,.specs tr+tr td{border-top:1px solid var(--line)}
+details.more ul{margin:0 0 8px;padding-left:18px}
+details.more li{margin-bottom:6px}
 .card .tag{color:var(--accent);margin:18px 0 8px}
 .card h3,.featured h3{font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-.015em;margin-bottom:10px}
 .featured h3{font-size:clamp(28px,3.6vw,40px);font-weight:800}
@@ -277,9 +292,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           </figure>
           <p class="mono tag">Embedded · EK 210</p>
           <h3>Touchless waste bin</h3>
-          <p>An Arduino-controlled bin that opens using ultrasonic ranging and servo actuation, with all logic on the microcontroller. I owned the CAD model and the servo mount design in Onshape, and tuned distance thresholds and debounce timing to eliminate false triggers.</p>
-          <p class="meta">Intro to Engineering Design, Boston University · May – Jun 2026 · team of 3</p>
-          <div class="chips"><span>Arduino</span><span>Ultrasonic sensing</span><span>Servo</span><span>Onshape</span></div>
+          <p>A hands-free bin: an HC-SR04 ultrasonic sensor spots a hand within 50 cm, and a 35 kg·cm waterproof servo swings the lid open, holds it for 5 seconds, then closes it. I owned the CAD model and the servo mount in Onshape, and tuned the distance threshold and debounce timing to stop false triggers.</p>
+          <p class="meta">EK 210 Intro to Engineering Design · May – Jun 2026 · with Guy Margalit and Mohammed Sunbul</p>
+          <div class="chips"><span>Onshape</span><span>3D printing</span><span>Arduino</span><span>Ultrasonic sensing</span><span>Servo</span></div>
+          <details class="more">
+            <summary>Design details</summary>
+            <div class="gallery">
+              <figure><img src="img/bin-cad.jpg" alt="Onshape assembly of the bin lid housing with the sensor cut-outs" loading="lazy"><figcaption>Lid assembly in Onshape</figcaption></figure>
+              <figure><img src="img/bin-circuit.jpg" alt="Circuit diagram: Arduino Uno, HC-SR04 sensor, servo, LED and battery pack" loading="lazy"><figcaption>Circuit diagram</figcaption></figure>
+            </div>
+            <table class="specs">
+              <tr><th>Trigger distance</th><td>&lt; 50 cm, average of 3 readings</td></tr>
+              <tr><th>Lid cycle</th><td>Open 5 s, then 3 s cooldown</td></tr>
+              <tr><th>Actuator</th><td>DS3235 digital servo, 35 kg·cm, waterproof</td></tr>
+              <tr><th>Power</th><td>8× AA pack, ≈ 42 h estimated at 60 mA idle</td></tr>
+              <tr><th>Bill of materials</th><td>$105.27 (target under $200)</td></tr>
+            </table>
+            <ul>
+              <li>Chose sensor, actuator and power from a function–means chart, then ranked goals with a pairwise comparison. No-touch hygiene came first, cost last.</li>
+              <li>Wiring soldered and heat-shrunk, routed through channels designed into the printed housing.</li>
+              <li>Next steps from our evaluation: rechargeable pack, better splash-proofing, long-run cycle testing.</li>
+            </ul>
+          </details>
         </article>
 
         <article class="card">
@@ -289,9 +323,27 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           </figure>
           <p class="mono tag">Embedded · EK 131</p>
           <h3>Room-temperature monitor</h3>
-          <p>An Arduino Uno in a project enclosure reads the room temperature and shows it in °C and °F on an I2C LCD. Status LEDs and a buzzer flag readings out of range. It has a power switch and runs from a 9 V battery or USB.</p>
-          <p class="meta">Course project · Boston University</p>
-          <div class="chips"><span>Arduino Uno</span><span>I2C LCD</span><span>Enclosure wiring</span></div>
+          <p>I built this to watch the temperature where I store my film. A TMP36 sensor feeds an Arduino Uno, which shows °C and °F on an I2C LCD. If the room leaves 70–80 °F, a red LED flashes and a buzzer sounds. It runs from a 9 V battery in a holder I designed in Onshape and 3D-printed, or from USB.</p>
+          <p class="meta">EK 131 · Boston University · solo build</p>
+          <div class="chips"><span>Arduino</span><span>Soldering</span><span>Onshape</span><span>3D printing</span></div>
+          <details class="more">
+            <summary>Design details</summary>
+            <div class="gallery">
+              <figure><img src="img/temp-cad.jpg" alt="Onshape assembly of the enclosure with LCD, switch, LEDs and ports" loading="lazy"><figcaption>Enclosure assembly in Onshape</figcaption></figure>
+              <figure><img src="img/temp-wiring.jpg" alt="Wiring diagram of the Arduino Uno, TMP36, LCD, LEDs, buzzer and battery" loading="lazy"><figcaption>Wiring diagram</figcaption></figure>
+            </div>
+            <table class="specs">
+              <tr><th>Sensor</th><td>TMP36, −40 to 125 °C</td></tr>
+              <tr><th>Alarm band</th><td>Outside 70–80 °F: red LED and 1 kHz buzzer</td></tr>
+              <tr><th>LED currents</th><td>Red 13.6 mA (220 Ω) · green 3 mA (1 kΩ)</td></tr>
+              <tr><th>Power</th><td>9 V battery, 80 mA draw, ≈ 6 h runtime</td></tr>
+            </table>
+            <ul>
+              <li>Measured every part with calipers and drew dimensioned sketches before laying out the box.</li>
+              <li>Prototyped on a breadboard, then soldered 22 AWG solid-core wire with heat shrink, wire nuts for shared 5 V and ground, and spade connectors to the switch.</li>
+              <li>Sized the LED resistors with KVL: the red alarm LED gets the smaller resistor so it is brighter.</li>
+            </ul>
+          </details>
         </article>
       </div>
     </div>
