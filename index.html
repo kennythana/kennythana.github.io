@@ -74,6 +74,12 @@ section{padding-block:56px}
 .frame::before{top:6px}.frame::after{bottom:6px}
 .frame .exposure{aspect-ratio:3/2;background:var(--frame);display:flex;align-items:flex-end;justify-content:space-between;gap:8px;padding:12px;color:var(--frame-ink);max-width:100%}
 .frame .exposure img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .exposure.photo{padding:0;display:block}
+.frame .exposure.chart{padding:6px;display:block;background:#FFFFFF}
+.frame .exposure.chart img{object-fit:contain}
+figcaption.cap{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.45}
+.portrait{margin:0 0 28px;max-width:360px}
+.portrait img{display:block;width:100%;height:auto;border-radius:2px}
 .frame .num{position:absolute;bottom:-1px;right:14px;font-family:var(--f-mono);font-size:10px;color:var(--film-ink);letter-spacing:.1em;transform:translateY(-6px)}
 .frame .slot{font-family:var(--f-mono);font-size:11px;line-height:1.4;letter-spacing:.04em;text-transform:none}
 
@@ -95,9 +101,6 @@ section{padding-block:56px}
 
 /* work */
 .featured{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center;margin-bottom:56px}
-.selected{position:relative}
-.selected svg.grease{position:absolute;inset:-22px -26px;width:calc(100% + 52px);height:calc(100% + 44px);pointer-events:none;overflow:visible}
-.selected svg.grease path{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;opacity:.9}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 40px}
 .card .tag{color:var(--accent);margin:18px 0 8px}
 .card h3,.featured h3{font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-.015em;margin-bottom:10px}
@@ -228,7 +231,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
       <article class="featured">
         <figure class="frame" style="margin:0">
-          <div class="exposure"><span class="slot">Photo slot: Doi Tung keychains with the filament spool</span></div>
+          <div class="exposure photo"><img src="img/keychains.jpg" alt="Rows of numbered Doi Tung keychains, white and brown, laid out on a wooden table"></div>
           <span class="num">▸ 02</span>
         </figure>
         <div>
@@ -244,7 +247,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <div class="grid">
         <article class="card">
           <figure class="frame" style="margin:0">
-            <div class="exposure"><span class="slot">Photo slot: mycelium packaging samples</span></div>
+            <div class="exposure photo"><img src="img/mycelium.jpg" alt="Two hollow cube-shaped mycelium biocomposite packaging samples" loading="lazy"></div>
             <span class="num">▸ 03</span>
           </figure>
           <p class="mono tag">Biomaterials · Chiang Mai University</p>
@@ -256,19 +259,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
         <article class="card">
           <figure class="frame" style="margin:0">
-            <div class="exposure"><span class="slot">Photo slot: nanorod solution vials</span></div>
+            <div class="exposure chart"><img src="img/nanorod-spectrum.jpg" alt="UV-Vis absorbance spectrum of a gold nanorod batch, with its longitudinal peak at 1041 nm near the 1030 nm target" loading="lazy"></div>
             <span class="num">▸ 04</span>
           </figure>
           <p class="mono tag">Nanomaterials · BU Yang Lab</p>
           <h3>Gold nanorods for photoacoustic retinal stimulation</h3>
           <p>I synthesize and surface-modify gold nanorods (PEGylation, chitosan coating), tuning their plasmon resonance near 1030 nm for photoacoustic stimulation of retinal tissue. I characterize them with UV-Vis spectroscopy and oscilloscope-based photoacoustic measurement, and log batch conditions to make synthesis more reproducible.</p>
+          <p class="meta">Pictured: UV-Vis spectrum of one batch. The longitudinal peak lands at 1041 nm, 11 nm from the 1030 nm target.</p>
           <p class="meta">Undergraduate Researcher · Oct 2025 – present</p>
           <div class="chips"><span>Nanorod synthesis</span><span>PEGylation</span><span>UV-Vis</span><span>Photoacoustics</span></div>
         </article>
 
         <article class="card">
           <figure class="frame" style="margin:0">
-            <div class="exposure"><span class="slot">Photo slot: the bin with lid open, sensor visible</span></div>
+            <div class="exposure photo"><img src="img/bin.jpg" alt="Black lid assembly on a grey bin, with the ultrasonic sensor mounted on a green bracket at the front" loading="lazy"></div>
             <span class="num">▸ 05</span>
           </figure>
           <p class="mono tag">Embedded · EK 210</p>
@@ -280,14 +284,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
         <article class="card">
           <figure class="frame" style="margin:0">
-            <div class="exposure"><span class="slot">Photo slot: club prints or a prosthetic hand prototype</span></div>
+            <div class="exposure photo"><img src="img/tempmonitor.jpg" alt="Black project enclosure with a blue LCD showing temperature in Celsius and Fahrenheit and a green status LED" loading="lazy"></div>
             <span class="num">▸ 06</span>
           </figure>
-          <p class="mono tag">Leadership · Northfield Mount Hermon</p>
-          <h3>3D Printing Club, founder and president</h3>
-          <p>Founded and led my high school’s 3D printing club. I taught Fusion 360 to 10 members and supported their prototypes, including hand prosthetics and educational models.</p>
-          <p class="meta">Sep 2023 – May 2025</p>
-          <div class="chips"><span>Fusion 360</span><span>Teaching</span><span>Prosthetics</span></div>
+          <p class="mono tag">Embedded · EK 131</p>
+          <h3>Room-temperature monitor</h3>
+          <p>An Arduino Uno in a project enclosure reads the room temperature and shows it in °C and °F on an I2C LCD. Status LEDs and a buzzer flag readings out of range. It has a power switch and runs from a 9 V battery or USB.</p>
+          <p class="meta">Course project · Boston University</p>
+          <div class="chips"><span>Arduino Uno</span><span>I2C LCD</span><span>Enclosure wiring</span></div>
         </article>
       </div>
     </div>
@@ -340,16 +344,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <div>
           <p>I’m a biomedical engineering student at Boston University with an intended minor in Materials Science &amp; Engineering. I’m from Bangkok, and I’ve spent most of the last eight years studying abroad in Singapore and the US.</p>
           <p>My research started with materials: turning agricultural waste into composites people can use, then making gold nanoparticles that respond to near-infrared light. Wearable biosensing is where those two threads meet. A sensor on the skin is a materials problem and an optics problem at once.</p>
-          <p>Outside the lab I shoot film, run distance and hike.</p>
+          <p>Outside the lab I shoot film, run distance and hike. My photography lives at <a href="https://kennytt.myportfolio.com/" target="_blank" rel="noopener">kennytt.myportfolio.com</a>.</p>
         </div>
+        <div>
+        <figure class="portrait">
+          <img src="img/icerd.jpg" alt="Kenny holding two award certificates at the 15th International Conference on Environmental and Rural Development" loading="lazy">
+          <figcaption class="cap">Excellent Paper and Excellent Poster, 15th ICERD, Thailand, March 2024</figcaption>
+        </figure>
         <dl class="kv">
           <dt>Study</dt><dd>B.S. Biomedical Engineering, Boston University, May 2029</dd>
           <dt>Lab</dt><dd>Gold nanorod synthesis, PEGylation, fungal culture, UV-Vis, SEM, photoacoustic and mechanical testing, experimental design</dd>
           <dt>Design</dt><dd>Fusion 360, Onshape, FDM 3D printing, filament extrusion</dd>
           <dt>Computing</dt><dd>Python, Arduino / embedded C, data analysis, technical writing</dd>
           <dt>Awards</dt><dd>ICAN Gold Medal and Best Young Inventor Award (2024) · ICERD Excellent Paper and Excellent Poster (2024) · Conrad Challenge finalist (2024)</dd>
+          <dt>Leadership</dt><dd>Founder and president, 3D Printing Club, Northfield Mount Hermon (2023–2025). Taught Fusion 360 to 10 members.</dd>
           <dt>Languages</dt><dd>Thai (native), English (fluent), Mandarin</dd>
         </dl>
+        </div>
       </div>
     </div>
   </section>
@@ -362,7 +373,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <h2>Building something you wear? Let’s talk.</h2>
         <div class="links">
           <div class="row"><span class="mono">Email</span><span id="email">kennythana@gmail.com</span><button class="copy" type="button" id="copyEmail">Copy</button></div>
-          <div class="row"><span class="mono">Photo</span><a href="https://www.instagram.com/kennyt.photo/" target="_blank" rel="noopener">@kennyt.photo</a></div>
+          <div class="row"><span class="mono">Photo</span><a href="https://kennytt.myportfolio.com/" target="_blank" rel="noopener">kennytt.myportfolio.com</a> · <a href="https://www.instagram.com/kennyt.photo/" target="_blank" rel="noopener">@kennyt.photo</a></div>
           <div class="row"><span class="mono">Scholar</span><span>Thana Teeraphantuvat</span></div>
         </div>
       </div>
