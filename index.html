@@ -3,8 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Thana (Kenny) Teeraphantuvat: biomedical engineering at Boston University. Biocomposites, nanomaterials, wearable biosensing.">
+<meta name="description" content="Thana (Kenny) Teeraphantuvat: biomedical engineering at Boston University. Biocomposites, nanomaterials, wearable biosensing. 6 publications, 3 in Q1 journals.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kennythana.github.io/">
+<meta property="og:title" content="Thana (Kenny) Teeraphantuvat">
+<meta property="og:description" content="Thana (Kenny) Teeraphantuvat: biomedical engineering at Boston University. Biocomposites, nanomaterials, wearable biosensing. 6 publications, 3 in Q1 journals.">
+<meta property="og:image" content="https://kennythana.github.io/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF">
 <title>Kenny Teeraphantuvat</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141719'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23C4122F' stroke-width='6'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ffffff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -186,7 +196,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   nav{gap:14px}
   .hero{padding-block:48px 28px}
 }
-@media (max-width:460px){nav a:nth-child(3){display:none}}
+@media (max-width:640px){
+  header.bar .wrap{flex-wrap:wrap;row-gap:4px;padding-block:10px 4px}
+  nav{flex-wrap:nowrap;overflow-x:auto;width:100%;gap:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  nav::-webkit-scrollbar{display:none}
+  nav a{padding-block:8px;white-space:nowrap}
+  section{padding-block:40px}
+  .copy{padding:8px 14px}
+  details.more summary{padding:14px 0}
+}
 
 /* Clean photo treatment: no film borders */
 .frame{background:none;padding:0;border-radius:0}
@@ -196,6 +214,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 .frame .exposure.chart{border:1px solid var(--line)}
 .edge::before,.edge::after{display:none}
 .edge{border-radius:2px}
+
+/* Motion: plays only as a section enters view; resting state is always visible */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.in{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.frame .exposure.photo img,.gallery img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.zoomable{cursor:zoom-in}
+@media (hover:hover){.frame:hover .exposure.photo img{transform:scale(1.025)}.gallery figure:hover img{transform:scale(1.02)}}
+.gallery figure{overflow:hidden;border-radius:2px}
+@media (prefers-reduced-motion: reduce){.in{animation:none}.frame .exposure.photo img,.gallery img{transition:none}.frame:hover .exposure.photo img,.gallery figure:hover img{transform:none}}
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,11,12,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:2px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb p{color:#D7DBDD;font-size:14px;max-width:70ch;text-align:center;margin:0}
+.lb button{position:absolute;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));font:inherit;font-size:14px;color:#FFFFFF;background:rgba(255,255,255,.12);border:0;border-radius:2px;padding:8px 14px;cursor:pointer}
+.lb button:focus-visible{outline:2px solid #FFFFFF}
 </style>
 </head>
 <body>
@@ -605,6 +638,37 @@ document.getElementById('copyEmail').addEventListener('click', function(){
   function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected'}
   try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
 });
+
+/* Scroll-in motion */
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var els=document.querySelectorAll('.sec-head,.featured,.card,.current>div,.scale,.maint,.pano,.pubs li,.about>*,.kv-grid,.contact');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  var vh=innerHeight;
+  els.forEach(function(el){if(el.getBoundingClientRect().top>vh)io.observe(el)});
+})();
+/* Lightbox */
+(function(){
+  var imgs=document.querySelectorAll('.exposure.photo img,.gallery img,.pano img');
+  var last=null;
+  function close(){var b=document.querySelector('.lb');if(b){b.remove();document.body.style.overflow='';if(last)last.focus()}}
+  function open(img){
+    last=img;var cap=img.closest('figure,article,div');var fc=img.closest('figure')&&img.closest('figure').querySelector('figcaption');
+    var b=document.createElement('div');b.className='lb';b.setAttribute('role','dialog');b.setAttribute('aria-modal','true');b.setAttribute('aria-label','Enlarged photo');
+    var btn=document.createElement('button');btn.type='button';btn.textContent='Close';btn.addEventListener('click',close);
+    var big=document.createElement('img');big.src=img.currentSrc||img.src;big.alt=img.alt;
+    var p=document.createElement('p');p.textContent=fc?fc.textContent:img.alt;
+    b.appendChild(btn);b.appendChild(big);b.appendChild(p);
+    b.addEventListener('click',function(e){if(e.target===b||e.target===big)close()});
+    document.body.appendChild(b);document.body.style.overflow='hidden';btn.focus();
+  }
+  imgs.forEach(function(img){
+    img.classList.add('zoomable');img.tabIndex=0;img.setAttribute('role','button');
+    img.addEventListener('click',function(){open(img)});
+    img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(img)}});
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
 </script>
 </body>
 </html>
