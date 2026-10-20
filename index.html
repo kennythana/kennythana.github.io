@@ -37,8 +37,7 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.0
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
 header.bar{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
-.mark{font-family:var(--f-display);font-weight:800;font-size:18px;text-decoration:none;letter-spacing:-.01em}
-.mark span{color:var(--accent)}
+.mark{font-family:var(--f-display);font-weight:700;font-size:17px;text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
 nav{display:flex;gap:22px;flex-wrap:wrap}
 nav a{text-decoration:none;color:var(--muted);font-size:14px}
 nav a:hover{color:var(--ink)}
@@ -77,8 +76,12 @@ section{padding-block:56px}
 .frame .exposure.chart{padding:6px;display:block;background:#FFFFFF}
 .frame .exposure.chart img{object-fit:contain}
 figcaption.cap{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.45}
-.portrait{margin:0 0 28px;max-width:360px}
-.portrait img{display:block;width:100%;height:auto;border-radius:2px}
+.portrait{margin:0}
+.kv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;margin:40px 0 0;font-size:15px}
+.kv-grid div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.kv-grid dt{color:var(--muted)}
+.kv-grid dd{margin:0}
+@media (max-width:820px){.kv-grid{grid-template-columns:minmax(0,1fr)}}
 .frame .num{position:absolute;bottom:-1px;right:14px;font-family:var(--f-mono);font-size:10px;color:var(--film-ink);letter-spacing:.1em;transform:translateY(-6px)}
 .frame .slot{font-family:var(--f-mono);font-size:11px;line-height:1.4;letter-spacing:.04em;text-transform:none}
 
@@ -168,7 +171,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <body>
 <header class="bar">
   <div class="wrap">
-    <a class="mark" href="#top">KT<span>.</span></a>
+    <a class="mark" href="#top">Kenny Teeraphantuvat</a>
     <nav aria-label="Sections">
       <a href="#now">Now</a>
       <a href="#work">Work</a>
@@ -398,22 +401,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           <p>My research started with materials: turning agricultural waste into composites people can use, then making gold nanoparticles that respond to near-infrared light. Wearable biosensing is where those two threads meet. A sensor on the skin is a materials problem and an optics problem at once.</p>
           <p>Outside the lab I shoot film, run distance and hike. My photography lives at <a href="https://kennytt.myportfolio.com/" target="_blank" rel="noopener">kennytt.myportfolio.com</a>.</p>
         </div>
-        <div>
-        <figure class="portrait">
-          <img src="img/icerd.jpg" alt="Kenny holding two award certificates at the 15th International Conference on Environmental and Rural Development" loading="lazy">
-          <figcaption class="cap">Excellent Paper and Excellent Poster, 15th ICERD, Thailand, March 2024</figcaption>
-        </figure>
-        <dl class="kv">
-          <dt>Study</dt><dd>B.S. Biomedical Engineering, Boston University, May 2029</dd>
-          <dt>Lab</dt><dd>Gold nanorod synthesis, PEGylation, fungal culture, UV-Vis, SEM, photoacoustic and mechanical testing, experimental design</dd>
-          <dt>Design</dt><dd>Fusion 360, Onshape, FDM 3D printing, filament extrusion</dd>
-          <dt>Computing</dt><dd>Python, Arduino / embedded C, data analysis, technical writing</dd>
-          <dt>Awards</dt><dd>ICAN Gold Medal and Best Young Inventor Award (2024) · ICERD Excellent Paper and Excellent Poster (2024) · Conrad Challenge finalist (2024)</dd>
-          <dt>Leadership</dt><dd>Founder and president, 3D Printing Club, Northfield Mount Hermon (2023–2025). Taught Fusion 360 to 10 members.</dd>
-          <dt>Languages</dt><dd>Thai (native), English (fluent), Mandarin</dd>
-        </dl>
-        </div>
+        <figure class="portrait" style="margin:0">
+            <div class="frame">
+              <div class="exposure photo"><img src="img/icerd.jpg" alt="Kenny holding two award certificates at the 15th International Conference on Environmental and Rural Development" loading="lazy"></div>
+              <span class="num">▸ 07</span>
+            </div>
+            <figcaption class="cap">Excellent Paper and Excellent Poster, 15th ICERD, Thailand, March 2024</figcaption>
+          </figure>
       </div>
+      <dl class="kv-grid">
+          <div><dt>Study</dt><dd>B.S. Biomedical Engineering, Boston University, May 2029</dd></div>
+          <div><dt>Lab</dt><dd>Gold nanorod synthesis, PEGylation, fungal culture, UV-Vis, SEM, photoacoustic and mechanical testing, experimental design</dd></div>
+          <div><dt>Design</dt><dd>Fusion 360, Onshape, FDM 3D printing, filament extrusion</dd></div>
+          <div><dt>Computing</dt><dd>Python, Arduino / embedded C, data analysis, technical writing</dd></div>
+          <div><dt>Awards</dt><dd>ICAN Gold Medal and Best Young Inventor Award (2024) · ICERD Excellent Paper and Excellent Poster (2024) · Conrad Challenge finalist (2024)</dd></div>
+          <div><dt>Leadership</dt><dd>Founder and president, 3D Printing Club, Northfield Mount Hermon (2023–2025). Taught Fusion 360 to 10 members.</dd></div>
+          <div><dt>Languages</dt><dd>Thai (native), English (fluent), Mandarin</dd></div>
+      </dl>
     </div>
   </section>
 
