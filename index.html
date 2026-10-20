@@ -105,6 +105,11 @@ figcaption.cap{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.45
 /* work */
 .featured{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center;margin-bottom:56px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 40px;align-items:start}
+.pano{margin:0 0 48px}
+.pano .exposure.pano-exp{aspect-ratio:auto}
+.pano .exposure.pano-exp img{height:auto}
+.also{margin:40px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:15px}
+.also .mono{color:var(--accent);margin-right:12px}
 details.more{margin-top:16px;border-top:1px solid var(--line)}
 details.more summary{cursor:pointer;list-style:none;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px 0;color:var(--ink);display:flex;justify-content:space-between}
 details.more summary::-webkit-details-marker{display:none}
@@ -175,6 +180,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <nav aria-label="Sections">
       <a href="#now">Now</a>
       <a href="#work">Work</a>
+      <a href="#builds">Builds</a>
       <a href="#publications">Publications</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -352,6 +358,55 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     </div>
   </section>
 
+  <!-- BUILDS -->
+  <section id="builds">
+    <div class="wrap">
+      <div class="sec-head"><h2>Builds &amp; repairs</h2><span class="mono">Hands-on, outside class</span></div>
+
+      <figure class="pano">
+        <div class="frame">
+          <div class="exposure photo pano-exp"><img src="img/pano-boston.jpg" alt="Black-and-white 6×17 panoramic photograph of the Boston skyline over Fenway Park, shot on the modified camera" loading="lazy"></div>
+          <span class="num">▸ 6×17</span>
+        </div>
+        <figcaption class="cap">Boston from Fenway, shot on the 6×17 camera below. One frame of 120 film, about three times wider than it is tall.</figcaption>
+      </figure>
+
+      <div class="grid">
+        <article class="card">
+          <figure class="frame" style="margin:0">
+            <div class="exposure photo"><img src="img/camera-617.jpg" alt="Purple 3D-printed 6×17 panoramic film camera on a tripod, facing the Boston skyline" loading="lazy"></div>
+            <span class="num">▸ 08</span>
+          </figure>
+          <p class="mono tag">Optics · 3D printing</p>
+          <h3>6×17 panoramic film camera</h3>
+          <p>I started from an open-source 3D-printed 6×17 camera and redesigned the lens cone so it would take a Schneider Super Angulon 90mm f/8. Getting sharp, clean frames meant iterating across print revisions until the flange distance put the image right on the film plane and the body was light-tight.</p>
+          <p class="meta">Personal build · 2026</p>
+          <div class="chips"><span>CAD</span><span>FDM printing</span><span>Tolerancing</span><span>Optics</span></div>
+        </article>
+
+        <article class="card">
+          <figure class="frame" style="margin:0">
+            <div class="exposure photo"><img src="img/deck-open.jpg" alt="AIWA AD-S37 cassette deck opened up, with the tape transport and capstan motor removed and laid out on the bench" loading="lazy"></div>
+            <span class="num">▸ 09</span>
+          </figure>
+          <p class="mono tag">Electromechanical · Repair</p>
+          <h3>AIWA AD-S37 cassette deck restoration</h3>
+          <p>A 1990s deck with Dolby B/C and HX Pro that would no longer play. The rubber drive belts had degraded and broken. I took apart the tape transport, removed the capstan motor and flywheel, cleaned the melted rubber residue from the pulleys and capstan, routed new belts along the motor–flywheel–reel path, and put it all back together. It plays again.</p>
+          <p class="meta">Personal repair · 2026</p>
+          <div class="chips"><span>Disassembly</span><span>Belt drive</span><span>Mechanism repair</span></div>
+          <details class="more">
+            <summary>Repair photos</summary>
+            <div class="gallery">
+              <figure><img src="img/deck-belt.jpg" alt="Close-up of the old degraded drive belt on the transport" loading="lazy"><figcaption>Old belts, stretched and sticky</figcaption></figure>
+              <figure><img src="img/deck-transport.jpg" alt="Tape transport removed from the deck, with the flywheel beside it" loading="lazy"><figcaption>Transport out, flywheel removed</figcaption></figure>
+            </div>
+          </details>
+        </article>
+      </div>
+      <p class="also"><span class="mono">Also</span> Replaced the light seals on a Nikon F2 and a Mamiya RB67 film back.</p>
+    </div>
+  </section>
+
   <!-- PUBLICATIONS -->
   <section id="publications">
     <div class="wrap">
@@ -405,7 +460,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <figure class="portrait" style="margin:0">
             <div class="frame">
               <div class="exposure photo"><img src="img/icerd.jpg" alt="Kenny holding two award certificates at the 15th International Conference on Environmental and Rural Development" loading="lazy"></div>
-              <span class="num">▸ 07</span>
+              <span class="num">▸ 10</span>
             </div>
             <figcaption class="cap">Excellent Paper and Excellent Poster, 15th ICERD, Thailand, March 2024</figcaption>
           </figure>
