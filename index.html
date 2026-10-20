@@ -155,6 +155,10 @@ details.more li{margin-bottom:6px}
 .pubs .j{font-style:italic;color:var(--muted);font-size:14px}
 .pubs .c{text-align:right;font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums}
 .pubs .c small{display:block;color:var(--muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.q{display:inline-block;margin-left:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;color:#FFFFFF;background:var(--accent);padding:1px 6px;border-radius:2px;vertical-align:1px;font-style:normal;white-space:nowrap}
+.q-plain{background:none;color:var(--muted);border:1px solid var(--line)}
+.pubnote{margin:-12px 0 20px;color:var(--muted);font-size:14px;max-width:75ch}
+.pubnote b{color:var(--ink);font-weight:600}
 .first{display:inline-block;margin-left:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:1px 5px;border-radius:2px;vertical-align:2px}
 @media (max-width:640px){.pubs li{grid-template-columns:minmax(0,1fr) 56px}.pubs .yr{grid-column:1/-1}}
 
@@ -490,17 +494,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <section id="publications">
     <div class="wrap">
       <div class="sec-head"><h2>Publications</h2><span class="mono" id="scholarNote">Google Scholar · <span data-stat="citations">205</span> citations</span></div>
+      <p class="pubnote"><b>3 of 6 papers are in JCR Q1 journals</b>, including my first-author <i>Polymers</i> paper, cited 65 times. Q1 means the journal ranks in the top quarter of its field by impact factor (Clarivate Journal Citation Reports, 2024: <i>Polymers</i> 4.9 in Polymer Science; <i>Biomimetics</i> 4.2 in Engineering, Multidisciplinary).</p>
       <ul class="pubs">
         <li>
           <span class="yr">2026</span>
           <div><div class="t">Development of mycelium-based green composites from lignocellulosic wastes for eco-friendly decorative and design applications</div>
-          <div class="a">Aiduang, W., Thamjaree, W., Jinanukul, P., <b>Teeraphantuvat, T.</b>, Lumyong, S. · <span class="j">Bioresource Technology Reports, 103113</span></div></div>
+          <div class="a">Aiduang, W., Thamjaree, W., Jinanukul, P., <b>Teeraphantuvat, T.</b>, Lumyong, S. · <span class="j">Bioresource Technology Reports, 103113</span><span class="q q-plain">Elsevier</span></div></div>
           <span class="c" data-pub="decorative">–<small>new</small></span>
         </li>
         <li>
           <span class="yr">2026</span>
           <div><div class="t">Fungi with function: transforming mycelium-based biocomposites into eco-friendly egg packaging</div>
-          <div class="a">Aiduang, W., <b>Teeraphantuvat, T.</b>, et al. · <span class="j">Bioresource Technology Reports, 35, 102965</span></div></div>
+          <div class="a">Aiduang, W., <b>Teeraphantuvat, T.</b>, et al. · <span class="j">Bioresource Technology Reports, 35, 102965</span><span class="q q-plain">Elsevier</span></div></div>
           <span class="c" data-pub="egg">1<small>cited</small></span>
         </li>
         <li>
@@ -512,19 +517,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <li>
           <span class="yr">2024</span>
           <div><div class="t">Improving the physical and mechanical properties of mycelium-based green composites using paper waste<span class="first">First author</span></div>
-          <div class="a"><b>Teeraphantuvat, T.</b>, et al. · <span class="j">Polymers, 16(2), 262</span></div></div>
+          <div class="a"><b>Teeraphantuvat, T.</b>, et al. · <span class="j">Polymers, 16(2), 262</span><span class="q">Q1 · IF 4.9</span></div></div>
           <span class="c" data-pub="paper-waste">65<small>cited</small></span>
         </li>
         <li>
           <span class="yr">2024</span>
           <div><div class="t">Sustainable innovation: fabrication and characterization of mycelium-based green composites for modern interior materials</div>
-          <div class="a">Aiduang, W., <b>Teeraphantuvat, T.</b>, et al. · <span class="j">Polymers, 16(4), 550</span></div></div>
+          <div class="a">Aiduang, W., <b>Teeraphantuvat, T.</b>, et al. · <span class="j">Polymers, 16(4), 550</span><span class="q">Q1 · IF 4.9</span></div></div>
           <span class="c" data-pub="interior">74<small>cited</small></span>
         </li>
         <li>
           <span class="yr">2024</span>
           <div><div class="t">A review delving into the factors influencing mycelium-based green composites (MBCs) production and their properties</div>
-          <div class="a">Aiduang, W., <b>Teeraphantuvat, T.</b>, et al. · <span class="j">Biomimetics, 9(6), 337</span></div></div>
+          <div class="a">Aiduang, W., <b>Teeraphantuvat, T.</b>, et al. · <span class="j">Biomimetics, 9(6), 337</span><span class="q">Q1 · IF 4.2</span></div></div>
           <span class="c" data-pub="review">59<small>cited</small></span>
         </li>
       </ul>
