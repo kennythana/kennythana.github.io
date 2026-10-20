@@ -20,12 +20,49 @@
   <nav aria-label="Main"><a href="index.html" aria-current="page">Work</a><a href="publications.html">Publications</a><a href="about.html">About</a></nav>
 </div></header>
 <main>
-<section class="intro"><div class="wrap">
+<section class="hero"><div class="wrap">
+  <p class="eyebrow">Biomedical Engineering · Boston University · Class of 2029</p>
   <h1>Thana (Kenny) Teeraphantuvat</h1>
-  <p>Biomedical engineering student at Boston University. I work with materials and light: biocomposites, gold nanorods and optical sensors. Now I'm moving toward devices worn on the body.</p>
-  <p class="intro-small">6 publications, 3 in Q1 journals. <a href="publications.html">See publications</a> · <a href="about.html">About me</a></p>
+  <p class="thesis">I work with materials and light: biocomposites, gold nanorods and optical sensors. Now I’m pointing that at <em>devices worn on the body</em>.</p>
 </div></section>
+
+<section class="now"><div class="wrap">
+  <div class="current">
+    <div>
+      <span class="status">In progress · Fall 2026</span>
+      <h2>Wearable ECG + PPG band for pulse arrival time</h2>
+      <p>My grandmother’s stroke is why I care about monitoring. After a stroke, heart rhythm and blood pressure get checked constantly, and both leave signals at the skin. This band records an electrical signal (ECG) and an optical one (PPG) at the same time. The delay between them, the pulse arrival time, tracks how fast the pressure wave travels, which is one route to cuff-less blood-pressure estimates.</p>
+      <p>The goal is a validated measurement, not a gadget. Heart rate from the band is compared against a commercial watch using Bland–Altman agreement analysis.</p>
+      <ul class="steps">
+        <li><span class="k">Hardware</span><span>Arduino Uno · AD8232 single-lead ECG · MAX30102 red/IR PPG, ~200 Hz</span></li>
+        <li><span class="k">Software</span><span>Firmware and a Python live-plot logger written</span></li>
+        <li><span class="k">Analysis</span><span>Band-pass filtering, R-peak and pulse-foot detection, PAT, HRV (RMSSD)</span></li>
+        <li><span class="k">Next</span><span>Breadboard build, rest and post-exercise sessions, agreement vs. watch</span></li>
+      </ul>
+      <p class="more-link"><a href="projects/wearable.html">Project page →</a></p>
+    </div>
+    <div>
+      <figure class="plan"><img src="img/wearable-plan.jpg" alt="Planned wiring: MAX30102 and AD8232 boards connected to an Arduino Uno"><figcaption>Planned wiring. Photos of the real build replace this once it’s on the bench.</figcaption></figure>
+      <figure class="trace"><svg viewBox="0 0 520 150" role="img" aria-label="Diagram: ECG R-peak followed by the PPG pulse foot, with the gap labelled pulse arrival time">
+              <g fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                <path stroke="var(--ink)" d="M10 50 H70 l8 -4 l8 4 H120 l6 6 l8 -48 l8 58 l6 -12 H200 l14 -8 l14 8 H300 l8 -4 l8 4 H350 l6 6 l8 -48 l8 58 l6 -12 H430 l14 -8 l14 8 H510"/>
+                <path stroke="var(--accent)" d="M10 128 C40 128 60 130 90 132 C120 134 140 136 158 136 C168 136 176 100 196 96 C214 94 222 108 240 114 C262 120 290 126 330 130 C360 133 375 136 388 136 C398 136 406 100 426 96 C444 94 452 108 470 114 C490 120 500 124 510 126"/>
+              </g>
+              <g stroke="var(--muted)" stroke-dasharray="3 3" stroke-width="1">
+                <line x1="134" y1="8" x2="134" y2="142"/>
+                <line x1="160" y1="8" x2="160" y2="142"/>
+              </g>
+              <path d="M136 80 H158" stroke="var(--muted)" stroke-width="1" fill="none"/>
+              <text x="166" y="84" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11">PAT</text>
+              <text x="10" y="22" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11">ECG</text>
+              <text x="10" y="112" fill="var(--accent)" font-family="IBM Plex Mono, monospace" font-size="11">PPG</text>
+            </svg><figcaption>Schematic, not recorded data. Real traces go here after the first session.</figcaption></figure>
+    </div>
+  </div>
+</div></section>
+
 <section class="work"><div class="wrap">
+  <h2 class="sec">Past work</h2>
   <div class="tiles">
     <a class="tile" href="projects/mycelium.html">
       <span class="tile-img"><img src="img/myc-growroom.jpg" alt="" loading="lazy"></span>
@@ -36,11 +73,6 @@
       <span class="tile-img"><img src="img/doitung-fobs.jpg" alt="" loading="lazy"></span>
       <span class="tile-title">Macadamia-shell filament</span>
       <span class="tile-line">3D-printing filament made from macadamia shell waste, used on Doi Tung's hotel key fobs.</span>
-    </a>
-    <a class="tile" href="projects/wearable.html">
-      <span class="tile-img chart"><img src="img/wearable-plan.jpg" alt="" loading="lazy"></span>
-      <span class="tile-title">Wearable ECG + PPG band</span>
-      <span class="tile-line">In progress: measuring pulse arrival time from the chest and fingertip.</span>
     </a>
     <a class="tile" href="projects/ezgrip.html">
       <span class="tile-img"><img src="img/ezgrip-use.jpg" alt="" loading="lazy"></span>
