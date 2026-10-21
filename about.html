@@ -3,50 +3,353 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About · Kenny Teeraphantuvat</title>
-<meta name="description" content="Thana (Kenny) Teeraphantuvat: biomedical engineering at Boston University. Biocomposites, nanomaterials, wearable biosensing.">
+<meta name="description" content="Thana (Kenny) Teeraphantuvat: biomedical engineering at Boston University. Biocomposites, nanomaterials, wearable biosensing. 6 publications, 3 in Q1 journals.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="About · Kenny Teeraphantuvat">
-<meta property="og:description" content="Thana (Kenny) Teeraphantuvat: biomedical engineering at Boston University. Biocomposites, nanomaterials, wearable biosensing.">
+<meta property="og:url" content="https://kennythana.github.io/">
+<meta property="og:title" content="Thana (Kenny) Teeraphantuvat">
+<meta property="og:description" content="Thana (Kenny) Teeraphantuvat: biomedical engineering at Boston University. Biocomposites, nanomaterials, wearable biosensing. 6 publications, 3 in Q1 journals.">
 <meta property="og:image" content="https://kennythana.github.io/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF">
+<title>About · Kenny Teeraphantuvat</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141719'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23C4122F' stroke-width='6'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ffffff'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a contact sheet on white paper. Single light theme by choice.
+   Projects are frames on a strip; the one "selected" frame is circled in grease pencil. */
+:root{
+  --bg:#FFFFFF; --surface:#F6F7F7; --ink:#141719; --muted:#59636A; --line:#DDE2E2;
+  --film:#1D1A18; --film-ink:#E2A75C; --frame:#EEF1F1; --frame-ink:#69737A;
+  --accent:#C4122F; --accent-soft:rgba(196,18,47,.07);
+  --f-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
+
+/* top bar */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+header.bar{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.mark{font-family:var(--f-display);font-weight:700;font-size:17px;text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted);font-size:14px}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding-block:72px 40px}
+.hero .eyebrow{color:var(--muted);margin-bottom:22px}
+.hero h1{font-size:clamp(34px, 5vw, 60px);font-weight:800;letter-spacing:-.025em;line-height:1.08}
+.thesis{max-width:40ch;font-size:clamp(19px, 2.2vw, 24px);line-height:1.45;margin:28px 0 0}
+.thesis em{font-style:normal;background:var(--accent-soft);box-shadow:inset 0 -2px 0 var(--accent);padding:0 2px}
+
+/* stats as film edge-print strip */
+.edge{margin-top:48px;background:var(--film);color:var(--film-ink);border-radius:3px;position:relative;overflow:hidden}
+.edge::before,.edge::after{content:"";position:absolute;left:0;right:0;height:7px;background:repeating-linear-gradient(90deg,transparent 0 9px,var(--bg) 9px 17px,transparent 17px 26px);opacity:.9}
+.edge::before{top:6px}.edge::after{bottom:6px}
+.edge dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:26px 8px}
+.edge div{padding:4px 16px;border-left:1px dashed color-mix(in srgb, var(--film-ink) 35%, transparent)}
+.edge div:first-child{border-left:0}
+.edge dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;order:2}
+.edge dd{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(26px,4vw,40px);font-variant-numeric:tabular-nums;color:#F3E6D2;line-height:1.1}
+@media (max-width:640px){.edge dl{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}.edge div:nth-child(3){border-left:0}}
+
+/* sections */
+section{padding-block:56px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--ink);padding-top:14px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
+.sec-head .mono{color:var(--muted)}
+
+/* film frame placeholder */
+.frame{position:relative;background:var(--film);padding:18px 10px;border-radius:2px;max-width:100%}
+.frame::before,.frame::after{content:"";position:absolute;left:10px;right:10px;height:6px;background:repeating-linear-gradient(90deg,var(--bg) 0 7px,transparent 7px 16px)}
+.frame::before{top:6px}.frame::after{bottom:6px}
+.frame .exposure{aspect-ratio:3/2;background:var(--frame);display:flex;align-items:flex-end;justify-content:space-between;gap:8px;padding:12px;color:var(--frame-ink);max-width:100%}
+.frame .exposure img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .exposure.photo{padding:0;display:block}
+.frame .exposure.chart{padding:6px;display:block;background:#FFFFFF}
+.frame .exposure.chart img{object-fit:contain}
+figcaption.cap{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.45}
+.portrait{margin:0}
+.kv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;margin:40px 0 0;font-size:15px}
+.kv-grid div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.kv-grid dt{color:var(--muted)}
+.kv-grid dd{margin:0}
+@media (max-width:820px){.kv-grid{grid-template-columns:minmax(0,1fr)}}
+.frame .num{position:absolute;bottom:-1px;right:14px;font-family:var(--f-mono);font-size:10px;color:var(--film-ink);letter-spacing:.1em;transform:translateY(-6px)}
+.frame .slot{font-family:var(--f-mono);font-size:11px;line-height:1.4;letter-spacing:.04em;text-transform:none}
+
+/* current project */
+.current{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:start}
+#now{border-top:1px solid var(--ink)}
+.status{display:inline-flex;align-items:center;gap:12px;color:var(--accent);margin-bottom:18px;font-size:clamp(18px,2vw,22px);font-weight:500;letter-spacing:.14em}
+.status::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion: reduce){.status::before{animation:none}}
+.current h3{font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.current p{margin:0 0 14px;max-width:62ch}
+.steps{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.steps .mono{color:var(--muted);padding-top:3px}
+.steps .done{color:var(--ink)}
+.trace{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:14px 14px 8px}
+.trace svg{display:block;width:100%;height:auto}
+.trace figcaption{color:var(--muted);margin-top:6px}
+
+/* work */
+.featured{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center;margin-bottom:56px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 40px;align-items:start}
+.scale{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:40px;align-items:center;margin:0 0 56px}
+.scale h3{font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-.015em;margin-bottom:10px}
+.scale p{margin:0 0 12px;max-width:60ch}
+.scale-fig svg{display:block;width:100%;height:auto}
+.maint{margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+.maint h3{font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-.015em;margin-bottom:10px}
+.maint>p{margin:0 0 12px;max-width:75ch}
+.maint .tag{color:var(--accent);margin:0 0 8px}
+.maint-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;margin-top:28px}
+.maint-grid .gallery{margin-top:12px}
+@media (max-width:820px){.scale,.maint-grid{grid-template-columns:minmax(0,1fr)}}
+.pano{margin:0 0 48px}
+.pano .exposure.pano-exp{aspect-ratio:auto}
+.pano .exposure.pano-exp img{height:auto}
+.also{margin:40px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:15px}
+.also .mono{color:var(--accent);margin-right:12px}
+details.more{margin-top:16px;border-top:1px solid var(--line)}
+details.more summary{cursor:pointer;list-style:none;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px 0;color:var(--ink);display:flex;justify-content:space-between}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"+";color:var(--accent)}
+details.more[open] summary::after{content:"−"}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:4px 0 14px}
+.gallery.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+details.more.wide{margin:-28px 0 56px}
+@media (max-width:640px){.gallery.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.gallery figure{margin:0}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#FFFFFF;border:1px solid var(--line);border-radius:2px}
+.gallery figcaption b{color:var(--accent);font-weight:600}
+.gallery figcaption{font-size:12px;color:var(--muted);margin-top:4px}
+.specs{width:100%;border-collapse:collapse;font-size:14px;margin:0 0 14px}
+.specs th{text-align:left;font-weight:500;color:var(--muted);padding:6px 12px 6px 0;width:42%;vertical-align:top}
+.specs td{padding:6px 0;font-variant-numeric:tabular-nums}
+.specs tr+tr th,.specs tr+tr td{border-top:1px solid var(--line)}
+details.more ul{margin:0 0 8px;padding-left:18px}
+details.more li{margin-bottom:6px}
+.card .tag{color:var(--accent);margin:18px 0 8px}
+.card h3,.featured h3{font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-.015em;margin-bottom:10px}
+.featured h3{font-size:clamp(28px,3.6vw,40px);font-weight:800}
+.card p,.featured p{margin:0 0 12px;color:var(--ink);max-width:60ch}
+.meta{color:var(--muted);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chips span{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;border:1px solid var(--line);padding:3px 8px;border-radius:2px;color:var(--muted)}
+
+/* publications */
+.pubs{list-style:none;margin:0;padding:0}
+.pubs li{display:grid;grid-template-columns:64px minmax(0,1fr) 72px;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.pubs .yr{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.pubs .t{font-weight:500;line-height:1.4}
+.pubs .a{color:var(--muted);font-size:14px;margin-top:4px}
+.pubs .a b{color:var(--ink);font-weight:600}
+.pubs .j{font-style:italic;color:var(--muted);font-size:14px}
+.pubs .c{text-align:right;font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums}
+.pubs .c small{display:block;color:var(--muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.q{display:inline-block;margin-left:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;color:#FFFFFF;background:var(--accent);padding:1px 6px;border-radius:2px;vertical-align:1px;font-style:normal;white-space:nowrap}
+.q-plain{background:none;color:var(--muted);border:1px solid var(--line)}
+.pubnote{margin:-12px 0 20px;color:var(--muted);font-size:14px;max-width:75ch}
+.pubnote b{color:var(--ink);font-weight:600}
+.first{display:inline-block;margin-left:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:1px 5px;border-radius:2px;vertical-align:2px}
+@media (max-width:640px){.pubs li{grid-template-columns:minmax(0,1fr) 56px}.pubs .yr{grid-column:1/-1}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px}
+.about p{margin:0 0 16px;max-width:60ch}
+.kv{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px 16px;margin:0;font-size:15px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+
+/* contact */
+.contact{display:flex;flex-wrap:wrap;gap:28px 56px;align-items:flex-end;justify-content:space-between}
+.contact h2{font-size:clamp(34px,6vw,72px);font-weight:800;letter-spacing:-.03em;max-width:14ch}
+.links{display:grid;gap:12px;min-width:0}
+.links .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.links .mono{color:var(--muted);width:84px}
+.copy{font:inherit;font-size:13px;background:none;border:1px solid var(--line);color:var(--ink);padding:4px 10px;border-radius:2px;cursor:pointer}
+.copy:hover{border-color:var(--ink)}
+footer{padding-block:32px 48px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px}
+
+@media (max-width:820px){
+  .current,.featured,.about{grid-template-columns:minmax(0,1fr);gap:28px}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  nav{gap:14px}
+  .hero{padding-block:48px 28px}
+}
+@media (max-width:640px){
+  header.bar .wrap{flex-wrap:wrap;row-gap:4px;padding-block:10px 4px}
+  nav{flex-wrap:nowrap;overflow-x:auto;width:100%;gap:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  nav::-webkit-scrollbar{display:none}
+  nav a{padding-block:8px;white-space:nowrap}
+  section{padding-block:40px}
+  .copy{padding:8px 14px}
+  details.more summary{padding:14px 0}
+}
+
+/* Clean photo treatment: no film borders */
+.frame{background:none;padding:0;border-radius:0}
+.frame::before,.frame::after{display:none}
+.frame .num{display:none}
+.frame .exposure{border-radius:2px;overflow:hidden}
+.frame .exposure.chart{border:1px solid var(--line)}
+.edge::before,.edge::after{display:none}
+.edge{border-radius:2px}
+
+/* Motion: plays only as a section enters view; resting state is always visible */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.in{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.frame .exposure.photo img,.gallery img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.zoomable{cursor:zoom-in}
+@media (hover:hover){.frame:hover .exposure.photo img{transform:scale(1.025)}.gallery figure:hover img{transform:scale(1.02)}}
+.gallery figure{overflow:hidden;border-radius:2px}
+@media (prefers-reduced-motion: reduce){.in{animation:none}.frame .exposure.photo img,.gallery img{transition:none}.frame:hover .exposure.photo img,.gallery figure:hover img{transform:none}}
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,11,12,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:2px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb p{color:#D7DBDD;font-size:14px;max-width:70ch;text-align:center;margin:0}
+.lb button{position:absolute;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));font:inherit;font-size:14px;color:#FFFFFF;background:rgba(255,255,255,.12);border:0;border-radius:2px;padding:8px 14px;cursor:pointer}
+.lb button:focus-visible{outline:2px solid #FFFFFF}
+</style>
 </head>
 <body>
-<header class="bar"><div class="wrap">
-  <a class="mark" href="index.html">Kenny Teeraphantuvat</a>
-  <nav aria-label="Main"><a href="index.html">Work</a><a href="publications.html">Publications</a><a href="about.html" aria-current="page">About</a></nav>
-</div></header>
-<main>
-<section class="plain"><div class="wrap">
-  <div class="about-grid">
-    <div class="prose">
-      <h1>About</h1>
-      <p>I'm a biomedical engineering student at Boston University with an intended minor in Materials Science &amp; Engineering. I'm from Bangkok, and I've spent most of the last eight years studying abroad in Singapore and the US.</p>
-      <p>My research started with materials: turning agricultural waste into composites people can use, then making gold nanoparticles that respond to near-infrared light. Wearable biosensing is where those two threads meet. A sensor on the skin is a materials problem and an optics problem at once.</p>
-      <p>Where I want to go: devices that work with the body. That means wearable sensors, assistive exoskeletons that help people walk and climb further, and new ways of making things, like footwear sprayed directly into shape.</p>
-      <p>Outside the lab I shoot film, run distance and hike. My photography is at <a href="https://kennytt.myportfolio.com/" target="_blank" rel="noopener">kennytt.myportfolio.com</a>.</p>
-    </div>
-    <figure class="portrait"><img src="img/icerd.jpg" alt="Kenny holding two award certificates at the 15th ICERD"><figcaption>Excellent Paper and Excellent Poster, 15th ICERD, Thailand, 2024</figcaption></figure>
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="index.html">Kenny Teeraphantuvat</a>
+    <nav aria-label="Sections">
+      <a href="index.html#now">Now</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#assistive">Assistive</a>
+      <a href="index.html#builds">Builds</a>
+      <a href="publications.html">Publications</a>
+      <a href="about.html" aria-current="page" style="color:var(--ink)">About</a>
+    </nav>
   </div>
-  <dl class="facts">
-    <div><dt>Study</dt><dd>B.S. Biomedical Engineering, Boston University, May 2029</dd></div>
-    <div><dt>Lab</dt><dd>Gold nanorod synthesis, PEGylation, fungal culture, UV-Vis, SEM, photoacoustic and mechanical testing, experimental design</dd></div>
-    <div><dt>Design</dt><dd>Fusion 360, Onshape, FDM 3D printing, filament extrusion</dd></div>
-    <div><dt>Computing</dt><dd>Python, Arduino / embedded C, data analysis, technical writing</dd></div>
-    <div><dt>Awards</dt><dd>ICAN Gold Medal and Best Young Inventor Award (2024) · ICERD Excellent Paper and Excellent Poster (2024) · Conrad Challenge finalist (2024)</dd></div>
-    <div><dt>Leadership</dt><dd>Founder and president, 3D Printing Club, Northfield Mount Hermon (2023–2025). e-NABLE Community Student Leader (2024).</dd></div>
-    <div><dt>Languages</dt><dd>Thai (native), English (fluent), Mandarin</dd></div>
-    <div><dt>Contact</dt><dd><span class="sel" id="email">kennythana@gmail.com</span> <button class="copy" type="button" id="copyEmail">Copy</button></dd></div>
-  </dl>
-</div></section>
+</header>
+
+<main id="top">
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><h2>About</h2><span class="mono">Bangkok · Singapore · Massachusetts</span></div>
+      <div class="about">
+        <div>
+          <p>I’m a biomedical engineering student at Boston University with an intended minor in Materials Science &amp; Engineering. I’m from Bangkok, and I’ve spent most of the last eight years studying abroad in Singapore and the US.</p>
+          <p>My research started with materials: turning agricultural waste into composites people can use, then making gold nanoparticles that respond to near-infrared light. Wearable biosensing is where those two threads meet. A sensor on the skin is a materials problem and an optics problem at once.</p>
+          <p>Where I want to go: devices that work with the body. That means wearable sensors, assistive exoskeletons that help people walk and climb further, and new ways of making things, like footwear sprayed directly into shape.</p>
+          <p>Outside the lab I shoot film, run distance and hike. My photography lives at <a href="https://kennytt.myportfolio.com/" target="_blank" rel="noopener">kennytt.myportfolio.com</a>.</p>
+        </div>
+        <figure class="portrait" style="margin:0">
+            <div class="frame">
+              <div class="exposure photo"><img src="img/icerd.jpg" alt="Kenny holding two award certificates at the 15th International Conference on Environmental and Rural Development" loading="lazy"></div>
+              <span class="num">▸ 10</span>
+            </div>
+            <figcaption class="cap">Excellent Paper and Excellent Poster, 15th ICERD, Thailand, March 2024</figcaption>
+          </figure>
+      </div>
+      <dl class="kv-grid">
+          <div><dt>Study</dt><dd>B.S. Biomedical Engineering, Boston University, May 2029</dd></div>
+          <div><dt>Lab</dt><dd>Gold nanorod synthesis, PEGylation, fungal culture, UV-Vis, SEM, photoacoustic and mechanical testing, experimental design</dd></div>
+          <div><dt>Design</dt><dd>Fusion 360, Onshape, FDM 3D printing, filament extrusion</dd></div>
+          <div><dt>Computing</dt><dd>Python, Arduino / embedded C, data analysis, technical writing</dd></div>
+          <div><dt>Awards</dt><dd>ICAN Gold Medal and Best Young Inventor Award (2024) · ICERD Excellent Paper and Excellent Poster (2024) · Conrad Challenge finalist (2024)</dd></div>
+          <div><dt>Leadership</dt><dd>Founder and president, 3D Printing Club, Northfield Mount Hermon (2023–2025). Taught Fusion 360 to 10 members. e-NABLE Community Student Leader (2024).</dd></div>
+          <div><dt>Languages</dt><dd>Thai (native), English (fluent), Mandarin</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head"><h2 style="font-size:20px">Contact</h2><span class="mono">Open to summer 2027 roles</span></div>
+      <div class="contact">
+        <h2>Building something you wear? Let’s talk.</h2>
+        <div class="links">
+          <div class="row"><span class="mono">Email</span><span id="email">kennythana@gmail.com</span><button class="copy" type="button" id="copyEmail">Copy</button></div>
+          <div class="row"><span class="mono">Photo</span><a href="https://kennytt.myportfolio.com/" target="_blank" rel="noopener">kennytt.myportfolio.com</a> · <a href="https://www.instagram.com/kennyt.photo/" target="_blank" rel="noopener">@kennyt.photo</a></div>
+          <div class="row"><span class="mono">Scholar</span><span>Thana Teeraphantuvat</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="wrap">
-  <span>Thana (Kenny) Teeraphantuvat · <span class="sel">kennythana@gmail.com</span></span>
-  <span><a href="https://www.linkedin.com/in/thana-teeraphantuvat-b70a9326b/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://kennytt.myportfolio.com/" target="_blank" rel="noopener">Photography</a></span>
-</div></footer>
-<script src="assets/site.js"></script>
+
+<footer>
+  <div class="wrap mono"><span>Thana Teeraphantuvat</span><span>Photos by the author</span></div>
+</footer>
+
+<script>
+/* Citation numbers: the HTML holds the last known values; stats.json (refreshed weekly
+   by a GitHub Action) overwrites them when present. If the file is missing, nothing changes. */
+fetch('stats.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
+  if(!d) return;
+  document.querySelectorAll('[data-stat]').forEach(function(el){var k=el.dataset.stat;if(d[k]!=null)el.textContent=d[k]});
+  if(d.papers) document.querySelectorAll('[data-pub]').forEach(function(el){
+    var n=d.papers[el.dataset.pub]; if(n==null) return;
+    el.innerHTML=(n>0?n:'–')+'<small>'+(n>0?'cited':'new')+'</small>';
+  });
+  if(d.updated){var u=document.getElementById('scholarNote');if(u)u.insertAdjacentText('beforeend',' · updated '+d.updated)}
+}).catch(function(){});
+var _cb=document.getElementById('copyEmail'); if(_cb) _cb.addEventListener('click', function(){
+  var btn=this, text=document.getElementById('email').textContent;
+  function done(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy'},1600)}
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected'}
+  try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+});
+
+/* Scroll-in motion */
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var els=document.querySelectorAll('.sec-head,.featured,.card,.current>div,.scale,.maint,.pano,.pubs li,.about>*,.kv-grid,.contact');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  var vh=innerHeight;
+  els.forEach(function(el){if(el.getBoundingClientRect().top>vh)io.observe(el)});
+})();
+/* Lightbox */
+(function(){
+  var imgs=document.querySelectorAll('.exposure.photo img,.gallery img,.pano img');
+  var last=null;
+  function close(){var b=document.querySelector('.lb');if(b){b.remove();document.body.style.overflow='';if(last)last.focus()}}
+  function open(img){
+    last=img;var cap=img.closest('figure,article,div');var fc=img.closest('figure')&&img.closest('figure').querySelector('figcaption');
+    var b=document.createElement('div');b.className='lb';b.setAttribute('role','dialog');b.setAttribute('aria-modal','true');b.setAttribute('aria-label','Enlarged photo');
+    var btn=document.createElement('button');btn.type='button';btn.textContent='Close';btn.addEventListener('click',close);
+    var big=document.createElement('img');big.src=img.currentSrc||img.src;big.alt=img.alt;
+    var p=document.createElement('p');p.textContent=fc?fc.textContent:img.alt;
+    b.appendChild(btn);b.appendChild(big);b.appendChild(p);
+    b.addEventListener('click',function(e){if(e.target===b||e.target===big)close()});
+    document.body.appendChild(b);document.body.style.overflow='hidden';btn.focus();
+  }
+  imgs.forEach(function(img){
+    img.classList.add('zoomable');img.tabIndex=0;img.setAttribute('role','button');
+    img.addEventListener('click',function(){open(img)});
+    img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(img)}});
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
 </body>
 </html>
