@@ -3,88 +3,97 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vectorscope — Thana Teeraphantuvat</title>
+<title>Sort By Colors — Thana Teeraphantuvat</title>
 <meta name="description" content="Browse Kenny's photography by colour. Drag the dot on the vectorscope and the grid re-sorts to the photos that contain that colour.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&display=swap">
 <style>
+/* Matches kennytt.myportfolio.com: white page, #282828 type, humanist sans, header with nav left and name centred. Light only, like the Portfolio site. */
 :root{
-  --bg:#ece9e3; --paper:#f6f4f0; --fg:#1d1b19; --mute:#726d66; --line:#cfc9bf;
-  --accent:#8a1c1c; --scope-grid:#b9b2a7;
-  --display:"Archivo Narrow","Arial Narrow",Arial,sans-serif;
-  --body:"IBM Plex Sans",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --bg:#ffffff; --fg:#282828; --mute:#8a8a8a; --line:#e6e6e6; --soft:#f6f6f6;
+  --accent:#282828; --scope-grid:#d9d9d9;
+  --body:"Alegreya Sans","Gill Sans","Optima",system-ui,sans-serif;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#151413; --paper:#1f1d1b; --fg:#ece7df; --mute:#9a938a; --line:#36322e;
-  --accent:#e05a4e; --scope-grid:#4a443e; color-scheme:dark } }
-:root[data-theme="dark"]{
-  --bg:#151413; --paper:#1f1d1b; --fg:#ece7df; --mute:#9a938a; --line:#36322e;
-  --accent:#e05a4e; --scope-grid:#4a443e; color-scheme:dark }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);
-  padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.wrap{max-width:1180px;margin:0 auto}
-header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:18px}
-h1{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.01em;margin:0;text-wrap:balance}
-.sub{color:var(--mute);font-size:14px;max-width:62ch;margin:0}
-.panel{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:28px;align-items:start;background:var(--paper);border:1px solid var(--line);padding:22px;margin-bottom:22px}
-@media (max-width:700px){.panel{grid-template-columns:1fr}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;
+  padding-block:0 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.site{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px 24px;padding-block:34px 40px;max-width:1600px;margin:0 auto}
+.site nav{display:flex;gap:30px;flex-wrap:wrap}
+.site nav a{color:var(--fg);text-decoration:none;font-size:22px;font-weight:400}
+.site nav a.on{font-weight:700}
+.site nav a:hover{opacity:.6}
+.site .name{font-size:28px;font-weight:700;color:var(--fg);text-decoration:none;white-space:nowrap}
+@media (max-width:760px){.site{grid-template-columns:1fr;justify-items:center;padding-block:24px 28px}.site .name{order:-1;font-size:24px}.site nav{gap:22px;justify-content:center}.site nav a{font-size:18px}}
+.wrap{max-width:1600px;margin:0 auto}
+.panel{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:48px;align-items:center;padding-block:8px 40px}
+@media (max-width:760px){.panel{grid-template-columns:1fr;gap:24px}}
 .scope{position:relative;width:100%;aspect-ratio:1;max-width:100%;touch-action:none;user-select:none;-webkit-user-select:none}
 .scope canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .scope .top{cursor:grab}
 .scope .top:active{cursor:grabbing}
-.read{display:flex;flex-direction:column;gap:16px;min-width:0}
-.hint{font-size:15px;line-height:1.45;margin:0}
-.hint b{color:var(--accent);font-weight:500}
-.vals{display:grid;grid-template-columns:repeat(3,auto);gap:10px 26px;font-family:var(--mono);font-variant-numeric:tabular-nums;align-items:end;justify-content:start}
-.vals .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-.vals .v{font-size:22px;font-weight:500}
-.swatch{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:14px;padding-top:14px;border-top:1px solid var(--line)}
+.read{display:flex;flex-direction:column;gap:20px;min-width:0;max-width:560px}
+h1{font-size:34px;font-weight:700;margin:0;line-height:1.1;text-wrap:balance}
+.hint{font-size:18px;line-height:1.45;margin:0;color:#555}
+.vals{display:flex;gap:36px;font-variant-numeric:tabular-nums lining-nums;align-items:end}
+.vals .k{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.vals .v{font-size:28px;font-weight:500}
+.swatch{display:flex;align-items:center;gap:12px;font-size:16px;padding-top:16px;border-top:1px solid var(--line);font-variant-numeric:lining-nums}
 .swatch i{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:inline-block}
 .swatch .match{margin-left:auto;color:var(--mute)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);background:transparent;border:1px solid var(--line);padding:6px 10px;cursor:pointer;border-radius:0}
-.chip:hover{color:var(--fg);border-color:var(--fg)}
-.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-button.quiet{font:500 13px var(--body);color:var(--mute);background:transparent;border:1px solid var(--line);padding:8px 14px;cursor:pointer;border-radius:0;align-self:flex-start}
-button.quiet:hover{color:var(--fg);border-color:var(--fg)}
-.bar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.04em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;align-items:start}
-@media (max-width:480px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}}
-.ph{position:relative;background:var(--paper);border:1px solid var(--line);transition:opacity .25s;cursor:pointer;min-width:0;margin:0}
-.ph img{display:block;width:100%;height:auto;max-width:100%;background:var(--line)}
-.ph .meta{display:flex;align-items:center;gap:6px;padding:7px 8px;font-family:var(--mono);font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums}
-.ph .meta .g{text-transform:uppercase;letter-spacing:.08em;font-size:10px}
-.ph .meta .pal{display:flex;gap:2px;margin-left:auto}
-.ph .meta .pal i{width:10px;height:10px;display:block;border-radius:50%}
-.ph.dim{opacity:.22}
-.ph:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.empty{grid-column:1/-1;padding:40px 16px;text-align:center;color:var(--mute);font-size:14px;border:1px dashed var(--line)}
-.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:24px;z-index:20;cursor:zoom-out}
+.chips{display:flex;flex-wrap:wrap;gap:6px 22px}
+.chip{font:400 18px var(--body);color:var(--mute);background:none;border:0;padding:2px 0;cursor:pointer}
+.chip:hover{color:var(--fg)}
+.chip[aria-pressed="true"]{color:var(--fg);font-weight:700}
+.chip:focus-visible,button.quiet:focus-visible,.ph:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+button.quiet{font:400 15px var(--body);color:var(--mute);background:none;border:0;padding:0;cursor:pointer;align-self:flex-start;text-decoration:underline;text-underline-offset:3px}
+button.quiet:hover{color:var(--fg)}
+.bar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px;font-size:15px;color:var(--mute)}
+.grid{display:flex;flex-wrap:wrap;gap:8px;--row:300px}
+.grid::after{content:"";flex-grow:1000}
+@media (max-width:760px){.grid{--row:150px;gap:6px}}
+.bar .tip{}
+@media (hover:none),(max-width:760px){.bar .tip{display:none}}
+.ph{position:relative;transition:opacity .25s;cursor:zoom-in;min-width:0;margin:0;flex:var(--ar) 1 calc(var(--ar) * var(--row));max-width:100%}
+.ph img{display:block;width:100%;height:auto;max-width:100%;background:var(--soft)}
+.ph .meta{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;padding:22px 10px 8px;font-size:14px;color:#fff;font-variant-numeric:lining-nums;
+  background:linear-gradient(transparent,rgba(0,0,0,.55));opacity:0;transition:opacity .2s}
+.ph:hover .meta,.ph:focus .meta{opacity:1}
+@media (hover:none){.ph .meta{opacity:1}}
+.ph .meta .g{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.ph{overflow:hidden}
+@media (max-width:760px){.ph .meta{padding:16px 6px 6px;gap:4px;font-size:12px}.ph .meta .g,.ph .meta .sc{display:none}.ph .meta .pal i{width:10px;height:10px}}
+.ph .meta .pal{display:flex;gap:3px;margin-left:auto}
+.ph .meta .pal i{width:12px;height:12px;display:block;border-radius:50%;border:1px solid rgba(255,255,255,.6);cursor:pointer}
+.ph.dim{opacity:.2}
+.lb{position:fixed;inset:0;background:rgba(255,255,255,.97);display:flex;align-items:center;justify-content:center;padding:32px;z-index:20;cursor:zoom-out}
 .lb img{max-width:100%;max-height:100%;object-fit:contain}
-.lb span{position:absolute;left:0;right:0;bottom:12px;text-align:center;color:#ccc;font:12px var(--mono);letter-spacing:.06em}
-footer{margin-top:28px;font-size:12px;color:var(--mute)}
+.lb span{position:absolute;left:0;right:0;bottom:14px;text-align:center;color:var(--mute);font-size:15px}
+footer{margin-top:60px;text-align:center;font-size:15px;color:var(--mute)}
 footer a{color:inherit}
-@media (prefers-reduced-motion:reduce){.ph{transition:none}}
+@media (prefers-reduced-motion:reduce){.ph,.ph .meta{transition:none}}
 </style>
 </head>
 <body>
+<header class="site">
+  <nav aria-label="Site">
+    <a href="https://kennytt.myportfolio.com/work">GALLERY</a>
+    <a href="https://kennytt.myportfolio.com/contact">ABOUT</a>
+    <a class="on" href="./" aria-current="page">Sort By Colors</a>
+  </nav>
+  <a class="name" href="https://kennytt.myportfolio.com/">Thana Teeraphantuvat</a>
+  <span aria-hidden="true"></span>
+</header>
 <div class="wrap">
-  <header>
-    <h1>Browse by colour</h1>
-    <p class="sub">Every photo in the portfolio is plotted on the wheel by the colours it contains. Drag the dot to a colour and the grid re-sorts to match.</p>
-  </header>
-
-  <section class="panel">
+<section class="panel">
     <div class="scope" id="scope">
       <canvas id="base"></canvas>
       <canvas id="top" class="top" aria-label="Colour wheel. Drag to pick a colour." role="img"></canvas>
     </div>
     <div class="read">
-      <p class="hint"><b>Drag the dot</b> to change the photos by colour. Angle is hue, distance from centre is saturation. Hover a photo to see where its colours sit; click one to open it.</p>
+      <h1>Sort by colour</h1>
+      <p class="hint">Drag the dot around the wheel and the photos re-sort by how much of that colour they contain. Angle is hue, distance from the centre is saturation.</p>
       <div class="vals">
         <div><div class="k">Hue</div><div class="v" id="hue">—</div></div>
         <div><div class="k">Sat</div><div class="v" id="sat">—</div></div>
@@ -96,9 +105,9 @@ footer a{color:inherit}
     </div>
   </section>
 
-  <div class="bar"><span id="status">loading…</span><span>r ≤ 0.18 on the wheel counts as a match</span></div>
+  <div class="bar"><span id="status">loading…</span><span class="tip">Hover a photo to see its colours on the wheel</span></div>
   <div class="grid" id="grid"></div>
-  <footer>Photographs © Thana Teeraphantuvat · <a href="https://kennytt.myportfolio.com" rel="noopener">Full portfolio</a></footer>
+  <footer>© Thana Teeraphantuvat · <a href="https://kennytt.myportfolio.com/">Back to gallery</a></footer>
 </div>
 
 <script>
@@ -108,7 +117,7 @@ const $ = id => document.getElementById(id);
 const scopeEl = $('scope'), base = $('base'), top = $('top');
 const bctx = base.getContext('2d'), tctx = top.getContext('2d');
 let photos = [], dot = {x: 0.045, y: -0.02}, hot = null, size = 0, dpr = 1, gallery = 'all';
-const GAL = {all:'All', boston:'Boston', 'human-moments':'Human moments', nature:'Nature', sports:'Sports', projects:'Projects', urban:'Urban'};
+const GAL = {all:'All', boston:'Boston', 'human-moments':'Human Moments', nature:'Nature', sports:'Sports', projects:'Projects', urban:'Urban'};
 
 function hsl2hex(h,s,l){const c=(1-Math.abs(2*l-1))*s,x=c*(1-Math.abs((h/60)%2-1)),m=l-c/2;
   let [r,g,b]=h<60?[c,x,0]:h<120?[x,c,0]:h<180?[0,c,x]:h<240?[0,x,c]:h<300?[x,0,c]:[c,0,x];
@@ -142,7 +151,7 @@ function drawTop(){
   const x=dot.x*R,y=dot.y*R,ac=css('--accent');
   tctx.strokeStyle=ac;tctx.lineWidth=dpr*1.2;tctx.globalAlpha=0.55;tctx.beginPath();tctx.arc(x,y,RADIUS*R,0,Math.PI*2);tctx.stroke();
   tctx.globalAlpha=1;tctx.lineWidth=dpr*2.5;tctx.strokeStyle=css('--fg');tctx.beginPath();tctx.arc(x,y,dpr*9,0,Math.PI*2);tctx.stroke();
-  tctx.fillStyle=css('--paper');tctx.beginPath();tctx.arc(x,y,dpr*9-dpr*1.25,0,Math.PI*2);tctx.fill();
+  tctx.fillStyle=css('--bg');tctx.beginPath();tctx.arc(x,y,dpr*9-dpr*1.25,0,Math.PI*2);tctx.fill();
   tctx.fillStyle=ac;tctx.beginPath();tctx.arc(x,y,dpr*3,0,Math.PI*2);tctx.fill();tctx.restore();
 }
 
@@ -169,7 +178,7 @@ function update(){
 function buildGrid(){
   grid.innerHTML='';
   for(const p of photos){
-    const el=document.createElement('figure');el.className='ph';el.tabIndex=0;p.el=el;
+    const el=document.createElement('figure');el.className='ph';el.tabIndex=0;el.style.setProperty('--ar',(p.w/p.h).toFixed(4));p.el=el;
     el.innerHTML=`<img alt="${GAL[p.g]} photograph" loading="lazy" decoding="async" width="${p.w}" height="${p.h}" src="img/${p.id}.jpg">
       <div class="meta"><span class="sc">—</span><span class="g">${GAL[p.g]}</span><span class="pal">${p.pal.map(c=>`<i style="background:${c}"></i>`).join('')}</span></div>`;
     el.addEventListener('mouseenter',()=>{hot=p;drawTop();});el.addEventListener('mouseleave',()=>{hot=null;drawTop();});
@@ -179,7 +188,7 @@ function buildGrid(){
     grid.appendChild(el);
   }
 }
-function openLB(p){const lb=document.createElement('div');lb.className='lb';lb.innerHTML=`<img src="img/${p.id}.jpg" alt=""><span>${GAL[p.g]} · tap a colour chip below a photo to jump the dot there</span>`;
+function openLB(p){const lb=document.createElement('div');lb.className='lb';lb.innerHTML=`<img src="img/${p.id}.jpg" alt=""><span>${GAL[p.g]} · click anywhere to close</span>`;
   lb.addEventListener('click',()=>lb.remove());document.addEventListener('keydown',function k(e){if(e.key==='Escape'){lb.remove();document.removeEventListener('keydown',k);}});document.body.appendChild(lb);}
 function buildChips(){
   const box=$('chips');
@@ -196,7 +205,6 @@ top.addEventListener('pointermove',e=>{if(dragging)setFromEvent(e);});
 top.addEventListener('pointerup',()=>dragging=false);top.addEventListener('pointercancel',()=>dragging=false);
 $('center').addEventListener('click',()=>{dot={x:0,y:0};update();});
 window.addEventListener('resize',fit);
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{rebuildBase();drawTop();});
 // palette chips on each photo jump the dot
 grid.addEventListener('click',e=>{const i=e.target.closest('.pal i');if(!i)return;e.stopPropagation();
   const[r,g,b]=i.style.background.match(/\d+/g).map(Number);const[h,s]=rgb2hs(r,g,b);[dot.x,dot.y]=toXY(h,s);update();},true);
