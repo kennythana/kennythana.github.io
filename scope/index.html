@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vectorscope Portfolio</title>
+<title>Vectorscope — Thana Teeraphantuvat</title>
+<meta name="description" content="Browse Kenny's photography by colour. Drag the dot on the vectorscope and the grid re-sorts to the photos that contain that colour.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
 <style>
-/* Layout: scope + readout up top like a colour-grading panel; masonry-ish photo grid below that re-sorts by match. */
 :root{
   --bg:#ece9e3; --paper:#f6f4f0; --fg:#1d1b19; --mute:#726d66; --line:#cfc9bf;
   --accent:#8a1c1c; --scope-grid:#b9b2a7;
@@ -20,10 +20,10 @@
 :root[data-theme="dark"]{
   --bg:#151413; --paper:#1f1d1b; --fg:#ece7df; --mute:#9a938a; --line:#36322e;
   --accent:#e05a4e; --scope-grid:#4a443e; color-scheme:dark }
-
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);margin:0;
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);
   padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1180px;margin:0 auto}
 header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:18px}
@@ -44,39 +44,38 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,38px);l
 .swatch{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:14px;padding-top:14px;border-top:1px solid var(--line)}
 .swatch i{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:inline-block}
 .swatch .match{margin-left:auto;color:var(--mute)}
-.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-button,.btn{font:500 13px var(--body);color:var(--fg);background:transparent;border:1px solid var(--fg);padding:8px 14px;cursor:pointer;border-radius:0}
-button:hover,.btn:hover{background:var(--fg);color:var(--bg)}
-button:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-button.quiet{border-color:var(--line);color:var(--mute)}
-button.quiet:hover{background:transparent;color:var(--fg);border-color:var(--fg)}
-input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
-.note{font-size:12px;color:var(--mute);margin:0}
-.drop{border:1px dashed var(--line);padding:10px 12px;font-size:12px;color:var(--mute)}
-.drop.on{border-color:var(--accent);color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);background:transparent;border:1px solid var(--line);padding:6px 10px;cursor:pointer;border-radius:0}
+.chip:hover{color:var(--fg);border-color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.quiet{font:500 13px var(--body);color:var(--mute);background:transparent;border:1px solid var(--line);padding:8px 14px;cursor:pointer;border-radius:0;align-self:flex-start}
+button.quiet:hover{color:var(--fg);border-color:var(--fg)}
 .bar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.04em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;align-items:start}
 @media (max-width:480px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}}
-.ph{position:relative;background:var(--paper);border:1px solid var(--line);transition:opacity .25s,transform .25s;cursor:pointer;min-width:0}
-.ph img{display:block;width:100%;height:auto;max-width:100%}
+.ph{position:relative;background:var(--paper);border:1px solid var(--line);transition:opacity .25s;cursor:pointer;min-width:0;margin:0}
+.ph img{display:block;width:100%;height:auto;max-width:100%;background:var(--line)}
 .ph .meta{display:flex;align-items:center;gap:6px;padding:7px 8px;font-family:var(--mono);font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums}
+.ph .meta .g{text-transform:uppercase;letter-spacing:.08em;font-size:10px}
 .ph .meta .pal{display:flex;gap:2px;margin-left:auto}
 .ph .meta .pal i{width:10px;height:10px;display:block;border-radius:50%}
 .ph.dim{opacity:.22}
-.ph.hot{outline:2px solid var(--accent);outline-offset:-2px}
-.ph .x{position:absolute;top:6px;right:6px;width:24px;height:24px;padding:0;line-height:22px;text-align:center;background:var(--paper);border-color:var(--line);font-size:14px;opacity:0}
-.ph:hover .x,.ph:focus-within .x{opacity:1}
-.ph .tag{position:absolute;top:6px;left:6px;font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--paper);color:var(--mute);padding:3px 6px;border:1px solid var(--line)}
+.ph:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .empty{grid-column:1/-1;padding:40px 16px;text-align:center;color:var(--mute);font-size:14px;border:1px dashed var(--line)}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:24px;z-index:20;cursor:zoom-out}
+.lb img{max-width:100%;max-height:100%;object-fit:contain}
+.lb span{position:absolute;left:0;right:0;bottom:12px;text-align:center;color:#ccc;font:12px var(--mono);letter-spacing:.06em}
+footer{margin-top:28px;font-size:12px;color:var(--mute)}
+footer a{color:inherit}
 @media (prefers-reduced-motion:reduce){.ph{transition:none}}
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <header>
-    <h1>Vectorscope Portfolio</h1>
-    <p class="sub">Every photo's colours are plotted on the wheel. Drag the dot to a colour and the grid re-sorts to the photos that contain it.</p>
+    <h1>Browse by colour</h1>
+    <p class="sub">Every photo in the portfolio is plotted on the wheel by the colours it contains. Drag the dot to a colour and the grid re-sorts to match.</p>
   </header>
 
   <section class="panel">
@@ -85,240 +84,128 @@ input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidde
       <canvas id="top" class="top" aria-label="Colour wheel. Drag to pick a colour." role="img"></canvas>
     </div>
     <div class="read">
-      <p class="hint"><b>Drag the dot</b> to change the photos by colour. Angle is hue, distance from centre is saturation. Hover a photo to see where its colours sit.</p>
+      <p class="hint"><b>Drag the dot</b> to change the photos by colour. Angle is hue, distance from centre is saturation. Hover a photo to see where its colours sit; click one to open it.</p>
       <div class="vals">
-        <div><div class="k">Hue</div><div class="v" id="hue">025°</div></div>
-        <div><div class="k">Sat</div><div class="v" id="sat">05%</div></div>
-        <div><div class="k">Photos</div><div class="v" id="count">0</div></div>
+        <div><div class="k">Hue</div><div class="v" id="hue">—</div></div>
+        <div><div class="k">Sat</div><div class="v" id="sat">—</div></div>
+        <div><div class="k">Photos</div><div class="v" id="count">—</div></div>
       </div>
-      <div class="swatch"><i id="sw"></i><span id="hex">#8f8a93</span><span class="match" id="best">—</span></div>
-      <div class="tools">
-        <label class="btn" for="file">Add photos</label>
-        <input id="file" type="file" accept="image/*" multiple>
-        <button class="quiet" id="center" type="button">Centre dot</button>
-        <button class="quiet" id="clear" type="button">Remove all</button>
-      </div>
-      <div class="drop" id="drop">…or drop image files anywhere on the page. Photos are downsized and kept only in this browser.</div>
-      <p class="note" id="note"></p>
+      <div class="swatch"><i id="sw"></i><span id="hex">—</span><span class="match" id="best">—</span></div>
+      <div class="chips" id="chips" role="group" aria-label="Gallery"></div>
+      <button class="quiet" id="center" type="button">Centre dot</button>
     </div>
   </section>
 
-  <div class="bar"><span id="status">sorted by match</span><span>r ≤ 0.18 on the wheel counts as a match</span></div>
+  <div class="bar"><span id="status">loading…</span><span>r ≤ 0.18 on the wheel counts as a match</span></div>
   <div class="grid" id="grid"></div>
+  <footer>Photographs © Thana Teeraphantuvat · <a href="https://kennytt.myportfolio.com" rel="noopener">Full portfolio</a></footer>
 </div>
 
 <script>
 (() => {
-const N_PTS = 600, THUMB = 520, RADIUS = 0.18, LS_KEY = 'vscope.photos.v1';
+const RADIUS = 0.18;
 const $ = id => document.getElementById(id);
 const scopeEl = $('scope'), base = $('base'), top = $('top');
 const bctx = base.getContext('2d'), tctx = top.getContext('2d');
-let photos = [];           // {id, src, w, h, pts:Float32Array[x,y,r,g,b...], pal:[hex], sample, score}
-let dot = {x: 0.045, y: -0.02}; // wheel coords, unit radius
-let hot = null, size = 0, dpr = 1;
+let photos = [], dot = {x: 0.045, y: -0.02}, hot = null, size = 0, dpr = 1, gallery = 'all';
+const GAL = {all:'All', boston:'Boston', 'human-moments':'Human moments', nature:'Nature', sports:'Sports', projects:'Projects', urban:'Urban'};
 
-// ---------- colour helpers ----------
-function rgb2hs(r,g,b){ // returns [hueDeg, sat(0..1 chroma-like), light]
-  r/=255; g/=255; b/=255;
-  const mx=Math.max(r,g,b), mn=Math.min(r,g,b), d=mx-mn, l=(mx+mn)/2;
-  let h=0;
-  if(d){ if(mx===r) h=((g-b)/d)%6; else if(mx===g) h=(b-r)/d+2; else h=(r-g)/d+4; h*=60; if(h<0) h+=360; }
-  const s = l===0||l===1 ? 0 : d/(1-Math.abs(2*l-1));
-  return [h, Math.min(1,s*Math.min(1, 2*Math.min(l,1-l)+0.35)), l]; // damp very dark/bright pixels toward centre
-}
-function hsl2hex(h,s,l){
-  const c=(1-Math.abs(2*l-1))*s, x=c*(1-Math.abs((h/60)%2-1)), m=l-c/2;
-  let [r,g,b]= h<60?[c,x,0]:h<120?[x,c,0]:h<180?[0,c,x]:h<240?[0,x,c]:h<300?[x,0,c]:[c,0,x];
-  return '#'+[r,g,b].map(v=>Math.round((v+m)*255).toString(16).padStart(2,'0')).join('');
-}
-// wheel: hue 0 at 12 o'clock, clockwise
-const toXY = (h,s)=>{ const a=(h-90)*Math.PI/180; return [s*Math.cos(a), s*Math.sin(a)]; };
-const toHS = (x,y)=>{ let h=Math.atan2(y,x)*180/Math.PI+90; if(h<0)h+=360; return [h, Math.min(1,Math.hypot(x,y))]; };
-
-// ---------- analysis ----------
-function analyse(img){
-  const c=document.createElement('canvas'), s=120, k=s/Math.max(img.width,img.height);
-  c.width=Math.max(1,Math.round(img.width*k)); c.height=Math.max(1,Math.round(img.height*k));
-  const cx=c.getContext('2d'); cx.drawImage(img,0,0,c.width,c.height);
-  const d=cx.getImageData(0,0,c.width,c.height).data, n=d.length/4;
-  const pts=new Float32Array(N_PTS*5); const bins=new Map();
-  for(let i=0;i<N_PTS;i++){
-    const p=Math.floor((i+0.5)/N_PTS*n)*4, r=d[p],g=d[p+1],b=d[p+2];
-    const [h,sat]=rgb2hs(r,g,b), [x,y]=toXY(h,sat);
-    pts.set([x,y,r,g,b], i*5);
-    const key=(Math.round(h/30)%12)+':'+Math.round(sat*4); // 12 hues x 5 sat rings
-    const e=bins.get(key)||{n:0,r:0,g:0,b:0}; e.n++; e.r+=r; e.g+=g; e.b+=b; bins.set(key,e);
-  }
-  const pal=[...bins.values()].sort((a,b)=>b.n-a.n).slice(0,5)
-    .map(e=>'#'+[e.r,e.g,e.b].map(v=>Math.round(v/e.n).toString(16).padStart(2,'0')).join(''));
-  return {pts,pal};
-}
-function thumb(img){
-  const k=Math.min(1,THUMB/Math.max(img.width,img.height));
-  const c=document.createElement('canvas'); c.width=Math.round(img.width*k); c.height=Math.round(img.height*k);
-  c.getContext('2d').drawImage(img,0,0,c.width,c.height);
-  return {src:c.toDataURL('image/jpeg',0.82), w:c.width, h:c.height};
-}
-function loadImage(src){ return new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=src; }); }
-
-async function addFiles(files){
-  const list=[...files].filter(f=>f.type.startsWith('image/'));
-  if(!list.length) return;
-  if(photos.some(p=>p.sample)) photos=photos.filter(p=>!p.sample);
-  $('note').textContent=`Reading ${list.length} photo${list.length>1?'s':''}…`;
-  for(const f of list){
-    try{
-      const url=URL.createObjectURL(f); const img=await loadImage(url); URL.revokeObjectURL(url);
-      const t=thumb(img); const a=analyse(img);
-      photos.push({id:Math.random().toString(36).slice(2), name:f.name, ...t, ...a});
-    }catch(e){ console.warn('skip',f.name,e); }
-  }
-  $('note').textContent=''; save(); rebuildBase(); renderGrid();
-}
-
-// ---------- samples (procedural, clearly labelled) ----------
-function makeSample(spec,i){
-  const c=document.createElement('canvas'); c.width=360; c.height=spec.tall?480:(spec.pano?720:270); if(spec.pano) c.height=140;
-  const g=c.getContext('2d');
-  const lg=g.createLinearGradient(0,0,spec.diag?c.width:0,c.height);
-  spec.stops.forEach((s,j)=>lg.addColorStop(j/(spec.stops.length-1),s));
-  g.fillStyle=lg; g.fillRect(0,0,c.width,c.height);
-  // horizon / shapes
-  if(spec.band){ g.fillStyle=spec.band; g.fillRect(0,c.height*spec.bandY,c.width,c.height*(1-spec.bandY)); }
-  if(spec.sun){ g.fillStyle=spec.sun; g.beginPath(); g.arc(c.width*0.68,c.height*0.38,c.height*0.12,0,7); g.fill(); }
-  // film grain
-  const id=g.getImageData(0,0,c.width,c.height), d=id.data; let seed=i*9973+17;
-  for(let p=0;p<d.length;p+=4){ seed=(seed*1664525+1013904223)>>>0; const n=((seed>>>16)&31)-15; d[p]+=n; d[p+1]+=n; d[p+2]+=n; }
-  g.putImageData(id,0,0);
-  return c;
-}
-const SAMPLES=[
- {stops:['#2b3d5c','#7f9bb5','#d9d3c3'],band:'#4a4a3a',bandY:.62},
- {stops:['#f2c38a','#e58a4b','#7a3b2a'],sun:'#fbe7b2',band:'#2c1c1a',bandY:.7,pano:true},
- {stops:['#1c2a22','#3d5c3a','#9fb57c'],band:'#172019',bandY:.75,tall:true},
- {stops:['#d8d2c6','#b7b1a7','#8b8781'],band:'#5d5a56',bandY:.55},
- {stops:['#5a1f2a','#9b3a3a','#d88a6c'],diag:true,tall:true},
- {stops:['#a9c7d8','#dfe9ee','#f4f1ea'],band:'#9db6c4',bandY:.66,pano:true},
- {stops:['#0f1a2a','#1d3b5c','#5c88a8'],sun:'#e9e2c8',band:'#0a0f17',bandY:.8},
- {stops:['#e8d9a8','#c8a85a','#8c6a2b'],band:'#5a4524',bandY:.6},
- {stops:['#3b2f4a','#7d5c8a','#c9a7c2'],diag:true},
- {stops:['#1f3f3a','#2f7a6c','#8fd1bd'],band:'#102622',bandY:.72,tall:true},
- {stops:['#f1e4df','#e6b8b2','#c57a7a'],diag:true},
- {stops:['#2a2a2a','#5c5c5c','#b3b3b3'],band:'#1a1a1a',bandY:.5,pano:true},
-];
-function seedSamples(){
-  photos=SAMPLES.map((s,i)=>{ const c=makeSample(s,i); const img={width:c.width,height:c.height}; // analyse from canvas directly
-    const a=analyseCanvas(c); return {id:'s'+i,name:'Sample '+(i+1),src:c.toDataURL('image/jpeg',0.8),w:c.width,h:c.height,sample:true,...a}; });
-}
-function analyseCanvas(c){ const im=new Image(); return analyse(c); } // canvas is drawable like an image
-
-// ---------- persistence ----------
-function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(photos.filter(p=>!p.sample).map(p=>({id:p.id,name:p.name,src:p.src,w:p.w,h:p.h})))); }catch(e){ $('note').textContent='Too many photos to remember in this browser; they stay until you reload.'; } }
-async function restore(){
-  let rows=null; try{ rows=JSON.parse(localStorage.getItem(LS_KEY)||'null'); }catch(e){}
-  if(!rows||!rows.length) return false;
-  for(const r of rows){ try{ const img=await loadImage(r.src); photos.push({...r, ...analyse(img)}); }catch(e){} }
-  return photos.length>0;
-}
+function hsl2hex(h,s,l){const c=(1-Math.abs(2*l-1))*s,x=c*(1-Math.abs((h/60)%2-1)),m=l-c/2;
+  let [r,g,b]=h<60?[c,x,0]:h<120?[x,c,0]:h<180?[0,c,x]:h<240?[0,x,c]:h<300?[x,0,c]:[c,0,x];
+  return '#'+[r,g,b].map(v=>Math.round((v+m)*255).toString(16).padStart(2,'0')).join('');}
+const toXY=(h,s)=>{const a=(h-90)*Math.PI/180;return[s*Math.cos(a),s*Math.sin(a)];};
+const toHS=(x,y)=>{let h=Math.atan2(y,x)*180/Math.PI+90;if(h<0)h+=360;return[h,Math.min(1,Math.hypot(x,y))];};
+function rgb2hs(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn,l=(mx+mn)/2;let h=0;
+  if(d){if(mx===r)h=((g-b)/d)%6;else if(mx===g)h=(b-r)/d+2;else h=(r-g)/d+4;h*=60;if(h<0)h+=360;}
+  const s=l===0||l===1?0:d/(1-Math.abs(2*l-1));return[h,Math.min(1,s*Math.min(1,2*Math.min(l,1-l)+0.35))];}
 
 // ---------- drawing ----------
-function fit(){
-  dpr=Math.min(2,window.devicePixelRatio||1); size=scopeEl.clientWidth;
-  for(const c of [base,top]){ c.width=Math.round(size*dpr); c.height=Math.round(size*dpr); }
-  rebuildBase(); drawTop();
-}
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function fit(){dpr=Math.min(2,window.devicePixelRatio||1);size=scopeEl.clientWidth;
+  for(const c of [base,top]){c.width=Math.round(size*dpr);c.height=Math.round(size*dpr);}rebuildBase();drawTop();}
+const visible=()=>photos.filter(p=>gallery==='all'||p.g===gallery);
 function rebuildBase(){
-  const S=base.width, R=S*0.46, C=S/2; bctx.clearRect(0,0,S,S);
-  bctx.save(); bctx.translate(C,C);
-  bctx.strokeStyle=css('--scope-grid'); bctx.lineWidth=dpr*0.8;
-  for(let k=1;k<=4;k++){ bctx.beginPath(); bctx.arc(0,0,R*k/4,0,Math.PI*2); bctx.stroke(); }
-  for(let a=0;a<360;a+=30){ const [x,y]=toXY(a,1); bctx.beginPath(); bctx.moveTo(x*R*0.08,y*R*0.08); bctx.lineTo(x*R,y*R); bctx.globalAlpha=a%60?0.35:0.8; bctx.stroke(); }
-  bctx.globalAlpha=1; bctx.fillStyle=css('--mute'); bctx.font=`${10*dpr}px ${css('--mono')}`; bctx.textAlign='center'; bctx.textBaseline='middle';
-  [['R',0],['YL',60],['G',120],['CY',180],['B',240],['MG',300]].forEach(([t,h])=>{ const [x,y]=toXY(h,1.085); bctx.fillText(t,x*R,y*R); });
-  // point cloud
-  const ps=dpr*1.4;
-  for(const p of photos){ const q=p.pts;
-    for(let i=0;i<q.length;i+=5){ bctx.fillStyle=`rgb(${q[i+2]},${q[i+3]},${q[i+4]})`; bctx.globalAlpha=0.55; bctx.fillRect(q[i]*R-ps/2, q[i+1]*R-ps/2, ps, ps); } }
+  const S=base.width,R=S*0.44,C=S/2;bctx.clearRect(0,0,S,S);bctx.save();bctx.translate(C,C);
+  bctx.strokeStyle=css('--scope-grid');bctx.lineWidth=dpr*0.8;
+  for(let k=1;k<=4;k++){bctx.beginPath();bctx.arc(0,0,R*k/4,0,Math.PI*2);bctx.stroke();}
+  for(let a=0;a<360;a+=30){const[x,y]=toXY(a,1);bctx.beginPath();bctx.moveTo(x*R*0.08,y*R*0.08);bctx.lineTo(x*R,y*R);bctx.globalAlpha=a%60?0.35:0.8;bctx.stroke();}
+  bctx.globalAlpha=1;bctx.fillStyle=css('--mute');bctx.font=`${10*dpr}px ${css('--mono')}`;bctx.textAlign='center';bctx.textBaseline='middle';
+  [['R',0],['YL',60],['G',120],['CY',180],['B',240],['MG',300]].forEach(([t,h])=>{const[x,y]=toXY(h,1.09);bctx.fillText(t,x*R,y*R);});
+  const vis=visible(), ps=dpr*1.3, alpha=Math.max(0.12,Math.min(0.55,40/Math.max(1,vis.length)));
+  bctx.globalAlpha=alpha;
+  for(const p of vis){const q=p.pts;for(let i=0;i<q.length;i+=5){bctx.fillStyle=`rgb(${q[i+2]},${q[i+3]},${q[i+4]})`;bctx.fillRect(q[i]*R-ps/2,q[i+1]*R-ps/2,ps,ps);}}
   bctx.restore();
 }
 function drawTop(){
-  const S=top.width, R=S*0.46, C=S/2; tctx.clearRect(0,0,S,S);
-  tctx.save(); tctx.translate(C,C);
-  if(hot){ const q=hot.pts, ps=dpr*2.2; tctx.fillStyle=css('--accent'); tctx.globalAlpha=0.9;
-    for(let i=0;i<q.length;i+=5) tctx.fillRect(q[i]*R-ps/2,q[i+1]*R-ps/2,ps,ps); tctx.globalAlpha=1; }
-  const x=dot.x*R, y=dot.y*R, ac=css('--accent');
-  tctx.strokeStyle=ac; tctx.lineWidth=dpr*1.2; tctx.globalAlpha=0.55;
-  tctx.beginPath(); tctx.arc(x,y,RADIUS*R,0,Math.PI*2); tctx.stroke();
-  tctx.globalAlpha=1; tctx.lineWidth=dpr*2.5; tctx.strokeStyle=css('--fg');
-  tctx.beginPath(); tctx.arc(x,y,dpr*9,0,Math.PI*2); tctx.stroke();
-  tctx.fillStyle=css('--paper'); tctx.beginPath(); tctx.arc(x,y,dpr*9-dpr*1.25,0,Math.PI*2); tctx.fill();
-  tctx.fillStyle=ac; tctx.beginPath(); tctx.arc(x,y,dpr*3,0,Math.PI*2); tctx.fill();
-  tctx.restore();
+  const S=top.width,R=S*0.44,C=S/2;tctx.clearRect(0,0,S,S);tctx.save();tctx.translate(C,C);
+  if(hot){const q=hot.pts,ps=dpr*2.2;tctx.fillStyle=css('--accent');tctx.globalAlpha=0.9;for(let i=0;i<q.length;i+=5)tctx.fillRect(q[i]*R-ps/2,q[i+1]*R-ps/2,ps,ps);tctx.globalAlpha=1;}
+  const x=dot.x*R,y=dot.y*R,ac=css('--accent');
+  tctx.strokeStyle=ac;tctx.lineWidth=dpr*1.2;tctx.globalAlpha=0.55;tctx.beginPath();tctx.arc(x,y,RADIUS*R,0,Math.PI*2);tctx.stroke();
+  tctx.globalAlpha=1;tctx.lineWidth=dpr*2.5;tctx.strokeStyle=css('--fg');tctx.beginPath();tctx.arc(x,y,dpr*9,0,Math.PI*2);tctx.stroke();
+  tctx.fillStyle=css('--paper');tctx.beginPath();tctx.arc(x,y,dpr*9-dpr*1.25,0,Math.PI*2);tctx.fill();
+  tctx.fillStyle=ac;tctx.beginPath();tctx.arc(x,y,dpr*3,0,Math.PI*2);tctx.fill();tctx.restore();
 }
 
 // ---------- matching ----------
-function score(p){ const q=p.pts; let n=0; const r2=RADIUS*RADIUS;
-  for(let i=0;i<q.length;i+=5){ const dx=q[i]-dot.x, dy=q[i+1]-dot.y; if(dx*dx+dy*dy<=r2) n++; }
-  return n/(q.length/5); }
+function score(p){const q=p.pts;let n=0;const r2=RADIUS*RADIUS;
+  for(let i=0;i<q.length;i+=5){const dx=q[i]-dot.x,dy=q[i+1]-dot.y;if(dx*dx+dy*dy<=r2)n++;}return n/(q.length/5);}
+const grid=$('grid');
 function update(){
-  const [h,s]=toHS(dot.x,dot.y);
+  const[h,s]=toHS(dot.x,dot.y);
   $('hue').textContent=String(Math.round(h)%360).padStart(3,'0')+'°';
   $('sat').textContent=String(Math.round(s*100)).padStart(2,'0')+'%';
-  const hex=hsl2hex(h,s,0.55); $('hex').textContent=hex; $('sw').style.background=hex;
-  for(const p of photos) p.score=score(p);
-  const shown=photos.filter(p=>p.score>0.02).sort((a,b)=>b.score-a.score);
-  const best=shown[0]; $('best').textContent=best?`best match ${Math.round(best.score*100)}%`:'no match';
+  const hex=hsl2hex(h,s,0.55);$('hex').textContent=hex;$('sw').style.background=hex;
+  const vis=visible();for(const p of vis)p.score=score(p);
+  const shown=vis.filter(p=>p.score>0.02).sort((a,b)=>b.score-a.score);
+  const best=shown[0];$('best').textContent=best?`best match ${Math.round(best.score*100)}%`:'no match';
   $('count').textContent=shown.length;
-  // reorder DOM
-  for(const p of shown){ const el=p.el; el.classList.toggle('dim',p.score<0.08); el.hidden=false; el.querySelector('.sc').textContent=Math.round(p.score*100)+'%'; grid.appendChild(el); }
-  for(const p of photos) if(!shown.includes(p)) p.el.hidden=true;
-  $('status').textContent=shown.length?'sorted by match':'nothing contains this colour';
+  for(const p of shown){const el=p.el;el.classList.toggle('dim',p.score<0.08);el.hidden=false;el.querySelector('.sc').textContent=Math.round(p.score*100)+'%';grid.appendChild(el);}
+  for(const p of photos)if(!shown.includes(p))p.el.hidden=true;
+  $('status').textContent=shown.length?`${GAL[gallery]} · sorted by match`:'nothing contains this colour';
   drawTop();
 }
 
 // ---------- grid ----------
-const grid=$('grid');
-function renderGrid(){
+function buildGrid(){
   grid.innerHTML='';
-  if(!photos.length){ grid.innerHTML='<div class="empty">No photos yet. Add some to see their colours on the wheel.</div>'; $('count').textContent='0'; $('best').textContent='—'; drawTop(); return; }
   for(const p of photos){
-    const el=document.createElement('figure'); el.className='ph'; el.tabIndex=0; el.style.margin=0; p.el=el;
-    el.innerHTML=`${p.sample?'<span class="tag">sample</span>':''}<img alt="${p.name||''}" width="${p.w}" height="${p.h}">
-      <div class="meta"><span class="sc">—</span><span class="pal">${p.pal.map(c=>`<i style="background:${c}"></i>`).join('')}</span></div>
-      <button class="x" type="button" aria-label="Remove photo">×</button>`;
-    el.querySelector('img').src=p.src;
-    el.addEventListener('mouseenter',()=>{hot=p;drawTop();}); el.addEventListener('mouseleave',()=>{hot=null;drawTop();});
-    el.addEventListener('focus',()=>{hot=p;drawTop();}); el.addEventListener('blur',()=>{hot=null;drawTop();});
-    el.addEventListener('click',e=>{ if(e.target.closest('.x')) return; // tap: jump dot to the photo's strongest colour
-      const [r,g,b]=p.pal[0].slice(1).match(/../g).map(v=>parseInt(v,16)); const [h,s]=rgb2hs(r,g,b); [dot.x,dot.y]=toXY(h,s); update(); });
-    el.querySelector('.x').addEventListener('click',()=>{ photos=photos.filter(q=>q!==p); hot=null; save(); rebuildBase(); renderGrid(); });
+    const el=document.createElement('figure');el.className='ph';el.tabIndex=0;p.el=el;
+    el.innerHTML=`<img alt="${GAL[p.g]} photograph" loading="lazy" decoding="async" width="${p.w}" height="${p.h}" src="img/${p.id}.jpg">
+      <div class="meta"><span class="sc">—</span><span class="g">${GAL[p.g]}</span><span class="pal">${p.pal.map(c=>`<i style="background:${c}"></i>`).join('')}</span></div>`;
+    el.addEventListener('mouseenter',()=>{hot=p;drawTop();});el.addEventListener('mouseleave',()=>{hot=null;drawTop();});
+    el.addEventListener('focus',()=>{hot=p;drawTop();});el.addEventListener('blur',()=>{hot=null;drawTop();});
+    el.addEventListener('click',()=>openLB(p));
+    el.addEventListener('keydown',e=>{if(e.key==='Enter')openLB(p);});
     grid.appendChild(el);
   }
-  update();
+}
+function openLB(p){const lb=document.createElement('div');lb.className='lb';lb.innerHTML=`<img src="img/${p.id}.jpg" alt=""><span>${GAL[p.g]} · tap a colour chip below a photo to jump the dot there</span>`;
+  lb.addEventListener('click',()=>lb.remove());document.addEventListener('keydown',function k(e){if(e.key==='Escape'){lb.remove();document.removeEventListener('keydown',k);}});document.body.appendChild(lb);}
+function buildChips(){
+  const box=$('chips');
+  for(const k of Object.keys(GAL)){const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=GAL[k];b.setAttribute('aria-pressed',k===gallery);
+    b.addEventListener('click',()=>{gallery=k;[...box.children].forEach(c=>c.setAttribute('aria-pressed',c===b));rebuildBase();update();});box.appendChild(b);}
 }
 
 // ---------- interaction ----------
 let dragging=false;
-function setFromEvent(e){ const r=top.getBoundingClientRect(); const R=r.width*0.46;
-  let x=(e.clientX-r.left-r.width/2)/R, y=(e.clientY-r.top-r.height/2)/R; const m=Math.hypot(x,y); if(m>1){x/=m;y/=m;}
-  dot={x,y}; update(); }
-top.addEventListener('pointerdown',e=>{ dragging=true; top.setPointerCapture(e.pointerId); setFromEvent(e); });
-top.addEventListener('pointermove',e=>{ if(dragging) setFromEvent(e); });
-top.addEventListener('pointerup',()=>dragging=false); top.addEventListener('pointercancel',()=>dragging=false);
-$('center').addEventListener('click',()=>{ dot={x:0,y:0}; update(); });
-$('clear').addEventListener('click',()=>{ photos=[]; hot=null; save(); rebuildBase(); renderGrid(); });
-$('file').addEventListener('change',e=>{ addFiles(e.target.files); e.target.value=''; });
-const drop=$('drop');
-['dragenter','dragover'].forEach(t=>document.addEventListener(t,e=>{ e.preventDefault(); drop.classList.add('on'); }));
-['dragleave','drop'].forEach(t=>document.addEventListener(t,e=>{ e.preventDefault(); if(t==='drop'||e.target===document.documentElement) drop.classList.remove('on'); }));
-document.addEventListener('drop',e=>addFiles(e.dataTransfer.files));
+function setFromEvent(e){const r=top.getBoundingClientRect();const R=r.width*0.44;
+  let x=(e.clientX-r.left-r.width/2)/R,y=(e.clientY-r.top-r.height/2)/R;const m=Math.hypot(x,y);if(m>1){x/=m;y/=m;}dot={x,y};update();}
+top.addEventListener('pointerdown',e=>{dragging=true;top.setPointerCapture(e.pointerId);setFromEvent(e);});
+top.addEventListener('pointermove',e=>{if(dragging)setFromEvent(e);});
+top.addEventListener('pointerup',()=>dragging=false);top.addEventListener('pointercancel',()=>dragging=false);
+$('center').addEventListener('click',()=>{dot={x:0,y:0};update();});
 window.addEventListener('resize',fit);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{rebuildBase();drawTop();});
-new MutationObserver(()=>{rebuildBase();drawTop();}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+// palette chips on each photo jump the dot
+grid.addEventListener('click',e=>{const i=e.target.closest('.pal i');if(!i)return;e.stopPropagation();
+  const[r,g,b]=i.style.background.match(/\d+/g).map(Number);const[h,s]=rgb2hs(r,g,b);[dot.x,dot.y]=toXY(h,s);update();},true);
 
 // ---------- boot ----------
-(async()=>{ const had=await restore(); if(!had) seedSamples(); fit(); renderGrid(); })();
+fetch('photos.json').then(r=>r.json()).then(rows=>{
+  photos=rows.map(r=>({...r,pts:Float32Array.from(r.pts)}));
+  buildChips();buildGrid();fit();update();
+}).catch(()=>{$('status').textContent='could not load photos.json';});
 })();
 </script>
 </body>
