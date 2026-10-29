@@ -365,7 +365,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           <p class="mono tag">Nanomaterials · BU Yang Lab</p>
           <h3>Gold nanorods for photoacoustic retinal stimulation</h3>
           <p>I synthesize and surface-modify gold nanorods (PEGylation, chitosan coating), tuning their plasmon resonance near 1030 nm for photoacoustic stimulation of retinal tissue. I characterize them with UV-Vis spectroscopy and oscilloscope-based photoacoustic measurement, and log batch conditions to make synthesis more reproducible.</p>
-          <p>The lab is developing the nanorods into an eye drop for retinal disease, so I also build tools for the animal work. My current one is a 3D-printed head holder that positions a rat for optical coherence tomography (OCT) of the retina, iris and cornea. The rat lies on its side, and hand-cranked, self-locking worm gears roll the head ±45° and tilt it −10° to +30° to line the eye up with the beam.</p>
+          <p>The lab is developing the nanorods into an eye drop for retinal disease, so I also build tools for the animal work. My current one is a 3D-printed head holder that positions a rat for optical coherence tomography (OCT) of the retina, iris and cornea. The rat lies on its side, and hand-cranked, self-locking worm gears roll the head ±90° and tilt it −10° to +30° to line the eye up with the beam. The first print went together in October 2026; the second revision fixes what it taught me.</p>
           <p class="meta">Pictured: UV-Vis spectrum of one batch. The longitudinal peak lands at 1041 nm, 11 nm from the 1030 nm target.</p>
           <p class="meta">Undergraduate Researcher · Oct 2025 – present</p>
           <div class="chips"><span>Nanorod synthesis</span><span>PEGylation</span><span>UV-Vis</span><span>Photoacoustics</span><span>Fusion CAD</span></div>
@@ -377,19 +377,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
               <figure><img src="img/oct-holder-side.jpg" alt="Side view of the holder: tower with tilt gear segment on top, cradle, and body rest with strap slot" loading="lazy"><figcaption>Side view</figcaption></figure>
             </div>
             <table class="specs">
-              <tr><th>Roll</th><td>±45°, engraved degree scale and pointer needle</td></tr>
-              <tr><th>Tilt</th><td>−10° to +30°, engraved scale</td></tr>
-              <tr><th>Resolution</th><td>0.5° per click, 6° per crank turn</td></tr>
-              <tr><th>Drive</th><td>TR12×3 worms on 60-tooth-equivalent gear segments</td></tr>
+              <tr><th>Roll</th><td>±90° (v1 was ±45°), 200° gear arc on a Ø34 hollow journal</td></tr>
+              <tr><th>Tilt</th><td>−10° to +30° on a Ø12 press-fit pivot pin, engraved scale</td></tr>
+              <tr><th>Drive</th><td>TR12×3 worms on 60-tooth-equivalent gear segments; 6° per crank turn</td></tr>
+              <tr><th>Lock</th><td>16-notch ratchet wheel on each worm shaft with a snap-in printed pawl: ⅜° per click, press the tab to release</td></tr>
+              <tr><th>Nose cone</th><td>Ø27 pass-through in the cradle's nose plate, inside the roll bearing</td></tr>
               <tr><th>Mounting</th><td>6 × 6 in base, counterbored ¼-20 holes on a ½ in pattern</td></tr>
-              <tr><th>Material</th><td>PLA, snap-fit parts, printed pivot pin; only hardware is ¼-20 bolts</td></tr>
+              <tr><th>Material</th><td>PLA, snap-fit and press-fit parts; only hardware is ¼-20 bolts</td></tr>
             </table>
             <ul>
-              <li>Worms are tilted by their lead angle (≈5.2°) so they mesh with straight-cut teeth that print cleanly.</li>
-              <li>Ran interference checks across the full tilt and roll sweep; only the intended worm–gear contact remains.</li>
-              <li>Velcro strap slots on the body rest and cradle hold the rat without a bite bar or nose cone.</li>
+              <li>Worms are tilted by their lead angle (≈5.2°) so they mesh with straight-cut teeth that print cleanly; 45° cones on the thread shoulders let them print standing up with no support.</li>
+              <li>v1 lesson: the cradle hung off a Ø8 stub axle and the frame off a Ø6 pin, and both rocked. v2 replaces them with a Ø34 ring bearing (the nose cone passes through its middle) and a Ø12 pin pressed into the frame.</li>
+              <li>Ran interference checks across the full tilt and ±95° roll sweep; only the intended worm–gear contact remains.</li>
+              <li>Velcro strap slots on the body rest and cradle hold the rat; the cradle is a straight U-trough sized from the lab's existing saddle.</li>
             </ul>
-            <p class="meta">Flipping the rat switches eyes. First print on the lab's Bambu A1 mini is next.</p>
+            <p class="meta">Flipping the rat switches eyes. v1 printed on the lab's Bambu A1 mini; v2 cradle, frame, tower and locks are printing now.</p>
           </details>
         </article>
 
